@@ -10,10 +10,10 @@ import UIKit
 import Foundation
 
 extension UIViewController {
-    public func showAlert(message: String) {
+    public func showAlert(message: String, button: String) {
         let alert = UIAlertController(title : "Attention", message: message, preferredStyle:UIAlertControllerStyle.Alert)
         
-        let button = UIAlertAction(title: "Retour", style: UIAlertActionStyle.Default, handler: nil )
+        let button = UIAlertAction(title: button, style: UIAlertActionStyle.Default, handler: nil )
         
         alert.addAction(button)
         

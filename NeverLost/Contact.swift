@@ -12,24 +12,24 @@ import Foundation
 public class Contact : Hashable {
     private var email: String
     private var status: Int
-    private var userName : String
-    private var longitude: CLLocationDegrees?
-    private var latitude: CLLocationDegrees?
+    private var username : String
+    private var longitude: CLLocationDegrees
+    private var latitude: CLLocationDegrees
     
+//    public init(email: String) {
+//        self.email = email
+//        status = -2
+//        username = ""
+//        longitude = CLLocationDegrees()
+//        latitude = CLLocationDegrees()
+//    }
     
-    public init(email: String ) {
-        self.email = email
-        status = -2
-        longitude = nil
-        latitude = nil
-    }
-    
-    public init(email: String, status: Int , userName : String) {
+    public init(email: String, status: Int , username : String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
         self.email = email
         self.status = status
-        self.userName = userName
-        longitude = nil
-        latitude = nil
+        self.username = username
+        self.longitude = longitude
+        self.latitude = latitude
     }
     
     public func getEmail() -> String {
@@ -48,33 +48,33 @@ public class Contact : Hashable {
         self.status = status
     }
     
-    public func getLongitude() -> CLLocationDegrees? {
+    public func getLongitude() -> CLLocationDegrees {
         return longitude
     }
     
-    public func setLongitude(longitude: CLLocationDegrees?) -> Void {
+    public func setLongitude(longitude: CLLocationDegrees) -> Void {
         self.longitude = longitude
     }
     
-    public func getLatitude() -> CLLocationDegrees? {
+    public func getLatitude() -> CLLocationDegrees {
         return latitude
     }
     
-    public func setLatitude(latitude: CLLocationDegrees?) -> Void {
+    public func setLatitude(latitude: CLLocationDegrees) -> Void {
         self.latitude = latitude
     }
     
-    public func getUserName () -> String {
-        return userName
+    public func getUsername () -> String {
+        return username
     }
     
-    public func setUserName( userName : String) -> Void {
-        self.userName = userName
+    public func setUsername( username : String) -> Void {
+        self.username = username
     }
     
     public var hashValue : Int {
         get {
-            return "\(self.email)".hashValue
+            return email.hashValue
         }
     }
 }

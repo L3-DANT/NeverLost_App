@@ -79,6 +79,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code == 200 {
                 setUserData(nil, token: nil)
+                Global.resetContacts()
                 self.performSegueWithIdentifier("MapToLogin", sender: self)
             } else {
                 print("Error -> \(result!["error"])")

@@ -34,7 +34,7 @@ class LoginController: UIViewController {
 //            return
 //        }
         
-        login("shamil@mail.com", password: "shamil")
+        login("leo@mail.com", password: "leo")
     }
     
     private func login(email: String, password: String) -> Void {
@@ -48,7 +48,7 @@ class LoginController: UIViewController {
                 setUserData(email, token: token)
                 self.performSegueWithIdentifier("LoginToMap", sender: self)
             } else {
-                self.showAlert("Champs incorrects")
+                self.showAlert("Champs incorrects", button: "Retour")
             }
         }
     }

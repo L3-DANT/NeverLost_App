@@ -16,7 +16,6 @@
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
-		59BCA19A1CE8E61C0080C894 /* Extension_CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
 		59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19F1CE8F5BD0080C894 /* contacts.png */; };
 		59BCA1A41CE8F5BD0080C894 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA1A01CE8F5BD0080C894 /* logout.png */; };
@@ -63,7 +62,6 @@
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_CLLocation.swift; sourceTree = "<group>"; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
 		59BCA19F1CE8F5BD0080C894 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
 		59BCA1A01CE8F5BD0080C894 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			children = (
 				59FE72E41CE75C5F00036D07 /* Utils.swift */,
 				59FE72E61CE75C7900036D07 /* Extension_UIViewController.swift */,
-				59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */,
 				0F852C781CF0686E00C640B6 /* Global.swift */,
 			);
 			name = Library;
@@ -330,7 +327,6 @@
 			files = (
 				0F852C771CF0660C00C640B6 /* Contact.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
-				59BCA19A1CE8E61C0080C894 /* Extension_CLLocation.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
 				59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */,
 				5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */,

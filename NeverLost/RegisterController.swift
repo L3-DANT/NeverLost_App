@@ -17,11 +17,11 @@ class RegisterController: UIViewController {
 
     @IBAction func buttonRegister(sender: UIButton) {
         if fieldEmail.text!.isEmpty {
-            self.showAlert("L'email est obligatoire.")
+            self.showAlert("L'email est obligatoire.", button: "Ok")
         } else if fieldPassword.text!.isEmpty {
-            self.showAlert("Le mot de passe est obligatoire.")
+            self.showAlert("Le mot de passe est obligatoire.", button: "Ok")
         } else if fieldConfirmation.text! != fieldPassword.text! {
-            self.showAlert("Les champs de mot de passe ne correspondent pas.")
+            self.showAlert("Les champs de mot de passe ne correspondent pas.", button: "Ok")
         } else {
             register(fieldEmail.text!, password: fieldPassword.text!)
         }
@@ -36,9 +36,10 @@ class RegisterController: UIViewController {
                 let email = result!["email"]
                 let token = result!["token"]
                 setUserData(email, token: token)
+                Global.resetContacts()
                 self.performSegueWithIdentifier("RegisterToMap", sender: self)
             } else {
-                self.showAlert("Cet adresse email est déjà utilisée.")
+                self.showAlert("Cet adresse email est déjà utilisée.", button: "Retour")
             }
         }
     }

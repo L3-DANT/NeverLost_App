@@ -7,19 +7,19 @@
 //
 
 import UIKit
+import CoreLocation
 import Foundation
 
 class StartController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let infos = getUserData()
         let email = infos.email
         let token = infos.token
         
         if email != nil && token != nil {
-            //getContacts(email, token: token)
-            self.performSegueWithIdentifier("StartToMap", sender: self)
+            getContacts()
         } else {
             self.performSegueWithIdentifier("StartToLogin", sender: self)
         }
@@ -31,15 +31,30 @@ class StartController : UIViewController {
         
         callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code == 200 && result != nil {
-                //let contacts: Set<Contact> = Set<Contact>()
+                for cpt in 0...result!.count {
+                    let email = result![cpt]!["email"] as? String
+                    let username = result![cpt]!["username"] as? String
+                    //let status = result![cpt]![""] as? String
+                    let longitude = result![cpt]!["lon"] as? CLLocationDegrees
+                    let latitude = result![cpt]!["lat"] as? CLLocationDegrees
+                    
+                    let contact = Contact(email: email!, status: 0, username: username!, longitude: longitude!, latitude: latitude!)
+                    
+                    Global.addContact(contact)
+                }
                 
-                
-                
-                
-                Global.setContacts(Global.getContacts())
+                for item in Global.getContacts() {
+                    print("CONTACT")
+                    print("email     -> " + item.getEmail())
+                    print("status    -> " + String(item.getStatus()))
+                    print("username  -> " + item.getUsername())
+                    print("longitude -> " + item.getLongitude().description)
+                    print("latitude  -> " + item.getLatitude().description)
+                }
                 self.performSegueWithIdentifier("StartToMap", sender: self)
             } else {
-                self.showAlert("Das ist eine problem")
+                self.showAlert(result!["error"]! as! String, button: "Se connecter")
+                self.performSegueWithIdentifier("StartToLogin", sender: self)
             }
         }
     }
