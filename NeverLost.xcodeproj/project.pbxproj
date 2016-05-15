@@ -13,6 +13,7 @@
 		592258851CE648D20028EED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592258831CE648D20028EED1 /* LaunchScreen.storyboard */; };
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
+		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
 		59FE72DE1CE75C2600036D07 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72DD1CE75C2600036D07 /* StartController.swift */; };
 		59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72DF1CE75C3E00036D07 /* LoginController.swift */; };
 		59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72E11CE75C4B00036D07 /* RegisterController.swift */; };
@@ -52,6 +53,7 @@
 		592258961CE648D20028EED1 /* NeverLostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeverLostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59FE72DD1CE75C2600036D07 /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		59FE72DF1CE75C3E00036D07 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		59FE72E11CE75C4B00036D07 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +92,7 @@
 		5922586E1CE648D20028EED1 = {
 			isa = PBXGroup;
 			children = (
+				59BCA1971CE8A0800080C894 /* MapKit.framework */,
 				592258791CE648D20028EED1 /* NeverLost */,
 				5922588E1CE648D20028EED1 /* NeverLostTests */,
 				592258991CE648D20028EED1 /* NeverLostUITests */,

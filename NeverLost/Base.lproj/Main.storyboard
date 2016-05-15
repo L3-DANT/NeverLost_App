@@ -30,22 +30,20 @@
                         <viewControllerLayoutGuide type="top" id="Iyz-Fs-8A8"/>
                         <viewControllerLayoutGuide type="bottom" id="tdQ-vE-v3K"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cv6-NY-dDS">
+                    <view key="view" contentMode="redraw" id="cv6-NY-dDS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmc-Lw-m6S">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
-                                <state key="normal" title="++"/>
-                                <connections>
-                                    <action selector="buttonLogout:" destination="lW7-eO-GSG" eventType="touchUpInside" id="sip-wx-d2E"/>
-                                </connections>
-                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eff-oe-Gxr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.73955756345764079" blue="0.99397150230269382" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lmc-Lw-m6S" firstAttribute="centerY" secondItem="cv6-NY-dDS" secondAttribute="centerY" id="Oof-Cf-cDF"/>
-                            <constraint firstItem="lmc-Lw-m6S" firstAttribute="centerX" secondItem="cv6-NY-dDS" secondAttribute="centerX" id="gHf-LM-PJv"/>
+                            <constraint firstItem="eff-oe-Gxr" firstAttribute="top" secondItem="Iyz-Fs-8A8" secondAttribute="bottom" constant="-20" id="BkQ-tW-VHp"/>
+                            <constraint firstItem="eff-oe-Gxr" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="-20" id="CuE-Na-8Vi"/>
+                            <constraint firstItem="eff-oe-Gxr" firstAttribute="centerX" secondItem="cv6-NY-dDS" secondAttribute="centerX" id="E7W-zD-HiA"/>
+                            <constraint firstItem="eff-oe-Gxr" firstAttribute="centerY" secondItem="cv6-NY-dDS" secondAttribute="centerY" id="Hny-1U-TtA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="91L-iu-p26"/>
@@ -55,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJS-yS-1dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="1307"/>
+            <point key="canvasLocation" x="1278" y="1307"/>
         </scene>
         <!--LoginController-->
         <scene sceneID="18t-c5-UjI">
@@ -123,8 +121,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="fieldEmail" destination="BMk-bm-LIp" id="0Fn-LD-fzM"/>
-                        <outlet property="fieldPassword" destination="EkJ-D5-Ql7" id="tnn-BW-Cjr"/>
+                        <outlet property="fieldEmail" destination="BMk-bm-LIp" id="Mau-iM-xiD"/>
+                        <outlet property="fieldPassword" destination="EkJ-D5-Ql7" id="LUG-sT-fZe"/>
                         <segue destination="lW7-eO-GSG" kind="presentation" identifier="LoginToMap" id="pjL-zQ-OWo"/>
                     </connections>
                 </viewController>

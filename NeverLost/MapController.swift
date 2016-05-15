@@ -12,33 +12,24 @@ import Foundation
 class MapController : UIViewController {
     
     @IBAction func buttonLogout(sender: UIButton) {
+        logout()
+    }
+    
+    private func logout() -> Void {
         let infos = getUserData()
         let email = infos.email
         let token = infos.token
         
-        logout(email!, token: token!)
-    }
-    
-    private func logout(email: String, token: String) -> Void {
-        let parameters = ["email": email, "token": token] as Dictionary<String, String>
+        let parameters = ["email": email!, "token": token!] as Dictionary<String, String>
         
         let route = "authentication/logout"
         
-        callUrlWithData(route, parameters: parameters) { (json: NSDictionary?, message: NSString?) in
-            if message != nil {
-                print("Error -> \(message)")
-                return
-            }
-            
-            if json != nil {
-                let status = Int(json!["status"] as! String)
-                
-                if status == 200 {
-                    setUserData(nil, token: nil)
-                    
-                    self.performSegueWithIdentifier("MapToLogin", sender: self)
-                }
-                
+        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            if code == 200 {
+                setUserData(nil, token: nil)
+                self.performSegueWithIdentifier("MapToLogin", sender: self)
+            } else {
+                print("Error -> \(result!["error"])")
             }
         }
     }

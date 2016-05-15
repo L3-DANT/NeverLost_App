@@ -8,10 +8,10 @@
 
 import Foundation
 
-public typealias ServiceResponse = (NSDictionary?, NSString?) -> Void
+public typealias ServiceResponse = (Int, NSDictionary?) -> Void
 
-/// getUserData: Read the NSUserDefaults (email and token)
-/// - Returns:
+/// Read the NSUserDefaults
+/// - Returns Email and token
 public func getUserData() -> (email: String?, token: String?) {
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -21,8 +21,8 @@ public func getUserData() -> (email: String?, token: String?) {
     return (email, token)
 }
 
-/// setUserData: Write the NSUserDefaults (email and token)
-/// - Returns: Void
+/// Write the NSUserDefaults (email and token)
+/// - Returns Void
 public func setUserData(email: AnyObject?, token: AnyObject?) -> Void {
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setObject(email, forKey: "checkEmail")
@@ -30,10 +30,19 @@ public func setUserData(email: AnyObject?, token: AnyObject?) -> Void {
     defaults.synchronize()
 }
 
+/// Check if the email is valid
+/// - Returns Bool
+func checkEmail(email: String) -> Bool {
+    let emailRegEx = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    
+    return emailTest.evaluateWithObject(email)
+}
+
 /// Execute a HTTP request with POST method via an url.
 /// - Parameter route The route of the url.
 /// - Parameter parameters The parameters to include in the body of the request.
-/// - Parameter callback 
+/// - Parameter callback ServiceResponse
 /// - Returns Void
 public func callUrlWithData(route: String, parameters: Dictionary<String, String>, callback: ServiceResponse) -> Void {
     let request = NSMutableURLRequest(URL: NSURL(string: "http://192.168.1.82:8080/NeverLost/rest/" + route)!)
@@ -61,37 +70,37 @@ public func callUrlWithData(route: String, parameters: Dictionary<String, String
             case 200 :
                 do {
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                        callback(json, nil)
+                        callback(statusCode, json)
                     }
                 } catch {
-                    callback(["status": String(statusCode)] as Dictionary<String, String>, nil)
+                    callback(statusCode, nil)
                 }
                 break
                 
             case 400 :
-                callback(["status": String(statusCode)] as Dictionary<String, String>, "Bad Request")
+                callback(statusCode, ["error": "Bad Request"])
                 break
                 
             case 401 :
                 setUserData(nil, token: nil)
-                callback(["status": String(statusCode)] as Dictionary<String, String>, "Unauthorized")
+                callback(statusCode, ["error": "Unauthorized"])
                 break
                 
             case 403 :
-                callback(["status": String(statusCode)] as Dictionary<String, String>, "Forbidden")
+                callback(statusCode, ["error": "Forbidden"])
                 break
                 
             case 404 :
-                callback(["status": String(statusCode)] as Dictionary<String, String>, "Not Found")
+                callback(statusCode, ["error": "Not Found"])
                 break
                 
             case 500 :
-                callback(["status": String(statusCode)] as Dictionary<String, String>, "Internal Server Error")
+                callback(statusCode, ["error": "Internal Server Error"])
                 break
                 
             default :
                 setUserData(nil, token: nil)
-                callback(nil, "Das ist eine problem !")
+                callback(0, ["error": "Das ist eine problem !"])
                 break
             }
         }

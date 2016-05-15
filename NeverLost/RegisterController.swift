@@ -30,22 +30,16 @@ class RegisterController: UIViewController {
     private func register(email: String, password: String) -> Void {
         let parameters = ["email": email, "password": password] as Dictionary<String, String>
         
-        let route = "authentication/register"
+        let route = "services/createuser"
         
-        callUrlWithData(route, parameters: parameters) { (json: NSDictionary?, message: NSString?) in
-            if message != nil {
-                self.showAlert(String(message))
-                self.showAlert("Cet adresse email est déjà utilisée.")
-                return
-            }
-            
-            if json != nil {
-                let email = json!["email"]
-                let token = json!["token"]
-                
+        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            if code == 200 && result != nil {
+                let email = result!["email"]
+                let token = result!["token"]
                 setUserData(email, token: token)
-                
                 self.performSegueWithIdentifier("RegisterToMap", sender: self)
+            } else {
+                self.showAlert("Cet adresse email est déjà utilisée.")
             }
         }
     }
