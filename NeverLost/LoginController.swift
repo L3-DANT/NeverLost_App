@@ -34,12 +34,11 @@ class LoginController: UIViewController {
 //            return
 //        }
         
-        login("leo@mail.com", password: "leo")
+        login("shamil@mail.com", password: "shamil")
     }
     
     private func login(email: String, password: String) -> Void {
         let parameters = ["email": email, "password": password] as Dictionary<String, String>
-        
         let route = "authentication/login"
         
         callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
