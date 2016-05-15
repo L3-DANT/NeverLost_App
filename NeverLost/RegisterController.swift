@@ -29,7 +29,6 @@ class RegisterController: UIViewController {
     
     private func register(email: String, password: String) -> Void {
         let parameters = ["email": email, "password": password] as Dictionary<String, String>
-        
         let route = "services/createuser"
         
         callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in

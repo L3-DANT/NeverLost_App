@@ -21,6 +21,16 @@ public func getUserData() -> (email: String?, token: String?) {
     return (email, token)
 }
 
+/// Read the dictionary needed to check the filter
+/// - Returns The dictionary
+public func getCheckOutParameters() -> Dictionary<String, String> {
+    let infos = getUserData()
+    let email = infos.email
+    let token = infos.token
+    
+    return ["email": email!, "token": token!] as Dictionary<String, String>
+}
+
 /// Write the NSUserDefaults (email and token)
 /// - Returns Void
 public func setUserData(email: AnyObject?, token: AnyObject?) -> Void {

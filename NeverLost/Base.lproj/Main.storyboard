@@ -22,6 +22,25 @@
             </objects>
             <point key="canvasLocation" x="330" y="-415"/>
         </scene>
+        <!--ProfileController-->
+        <scene sceneID="RsV-AT-7ad">
+            <objects>
+                <viewController title="ProfileController" id="gz6-Bn-ty2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AJm-s5-zgM"/>
+                        <viewControllerLayoutGuide type="bottom" id="KfK-DL-jFt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GOd-cF-AfH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fm4-0P-Ndx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x8n-st-OsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="2238"/>
+        </scene>
         <!--MapController-->
         <scene sceneID="ndu-XD-JzE">
             <objects>
@@ -37,23 +56,88 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eff-oe-Gxr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24T-HQ-3QP">
+                                <rect key="frame" x="45" y="50" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="K5X-vK-IAg"/>
+                                    <constraint firstAttribute="height" constant="25" id="cMi-2n-0ph"/>
+                                </constraints>
+                                <state key="normal" image="profile.png"/>
+                                <connections>
+                                    <segue destination="gz6-Bn-ty2" kind="show" id="L1Q-4y-WFH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-v9-D15">
+                                <rect key="frame" x="45" y="100" width="25" height="25"/>
+                                <state key="normal" image="contacts.png"/>
+                                <connections>
+                                    <segue destination="zwN-ZL-yLe" kind="show" id="ttM-1Q-xIV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98X-bX-hQK">
+                                <rect key="frame" x="45" y="150" width="25" height="25"/>
+                                <state key="normal" image="logout.png"/>
+                                <connections>
+                                    <action selector="buttonLogout:" destination="lW7-eO-GSG" eventType="touchUpInside" id="22b-pc-khP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGf-VQ-xQK">
+                                <rect key="frame" x="45" y="545" width="25" height="25"/>
+                                <state key="normal" image="centeronme.png"/>
+                                <connections>
+                                    <action selector="buttonCenterOnMe:" destination="lW7-eO-GSG" eventType="touchUpInside" id="A4u-Xa-HbX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.73955756345764079" blue="0.99397150230269382" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="6H6-v9-D15" firstAttribute="top" secondItem="24T-HQ-3QP" secondAttribute="bottom" constant="25" id="3Al-Wp-gmT"/>
+                            <constraint firstItem="98X-bX-hQK" firstAttribute="width" secondItem="24T-HQ-3QP" secondAttribute="width" id="6Eg-xS-bdO"/>
+                            <constraint firstItem="24T-HQ-3QP" firstAttribute="top" secondItem="Iyz-Fs-8A8" secondAttribute="bottom" constant="30" id="7n3-WE-Qmv"/>
                             <constraint firstItem="eff-oe-Gxr" firstAttribute="top" secondItem="Iyz-Fs-8A8" secondAttribute="bottom" constant="-20" id="BkQ-tW-VHp"/>
+                            <constraint firstItem="tdQ-vE-v3K" firstAttribute="top" secondItem="HGf-VQ-xQK" secondAttribute="bottom" constant="30" id="CEZ-0r-5Oj"/>
                             <constraint firstItem="eff-oe-Gxr" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="-20" id="CuE-Na-8Vi"/>
                             <constraint firstItem="eff-oe-Gxr" firstAttribute="centerX" secondItem="cv6-NY-dDS" secondAttribute="centerX" id="E7W-zD-HiA"/>
+                            <constraint firstItem="24T-HQ-3QP" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="25" id="Evu-rG-D6R"/>
                             <constraint firstItem="eff-oe-Gxr" firstAttribute="centerY" secondItem="cv6-NY-dDS" secondAttribute="centerY" id="Hny-1U-TtA"/>
+                            <constraint firstItem="98X-bX-hQK" firstAttribute="top" secondItem="6H6-v9-D15" secondAttribute="bottom" constant="25" id="WN6-GK-PC6"/>
+                            <constraint firstItem="6H6-v9-D15" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="25" id="YVc-Sh-tbY"/>
+                            <constraint firstItem="6H6-v9-D15" firstAttribute="width" secondItem="24T-HQ-3QP" secondAttribute="width" id="fp8-iH-aoc"/>
+                            <constraint firstItem="98X-bX-hQK" firstAttribute="height" secondItem="24T-HQ-3QP" secondAttribute="height" id="gGY-wm-fta"/>
+                            <constraint firstItem="98X-bX-hQK" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="25" id="hZi-zn-5VK"/>
+                            <constraint firstItem="6H6-v9-D15" firstAttribute="height" secondItem="24T-HQ-3QP" secondAttribute="height" id="mEL-Hj-8Gd"/>
+                            <constraint firstItem="HGf-VQ-xQK" firstAttribute="height" secondItem="24T-HQ-3QP" secondAttribute="height" id="n4n-Jj-XIE"/>
+                            <constraint firstItem="HGf-VQ-xQK" firstAttribute="width" secondItem="24T-HQ-3QP" secondAttribute="width" id="nRO-pH-x9W"/>
+                            <constraint firstItem="HGf-VQ-xQK" firstAttribute="leading" secondItem="cv6-NY-dDS" secondAttribute="leadingMargin" constant="25" id="p3K-uw-2Ev"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="91L-iu-p26"/>
                     <connections>
+                        <outlet property="map" destination="eff-oe-Gxr" id="zPY-kX-edf"/>
                         <segue destination="iwA-TM-aLm" kind="presentation" identifier="MapToLogin" id="qrT-cb-y6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJS-yS-1dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1278" y="1307"/>
+        </scene>
+        <!--ContactsController-->
+        <scene sceneID="7dd-8Y-5hf">
+            <objects>
+                <viewController title="ContactsController" id="zwN-ZL-yLe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Wm-5g-kXO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yvh-AI-3e6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fyL-uT-l0p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tz8-9e-dGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707" y="2231"/>
         </scene>
         <!--LoginController-->
         <scene sceneID="18t-c5-UjI">
@@ -253,7 +337,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="centeronme.png" width="25" height="25"/>
+        <image name="contacts.png" width="35" height="22"/>
         <image name="loading_wolf.gif" width="194" height="96"/>
+        <image name="logout.png" width="22" height="24"/>
+        <image name="profile.png" width="23" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qrT-cb-y6b"/>
