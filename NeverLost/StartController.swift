@@ -18,9 +18,29 @@ class StartController : UIViewController {
         let token = infos.token
         
         if email != nil && token != nil {
+//            getContacts(email, token: token)
             self.performSegueWithIdentifier("StartToMap", sender: self)
         } else {
             self.performSegueWithIdentifier("StartToLogin", sender: self)
+        }
+    }
+    
+    private func getContacts() -> Void {
+        let parameters = getCheckOutParameters()
+        let route = "services/getfriendlist"
+        
+        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            if code == 200 && result != nil {
+                
+                
+                
+                
+                
+                Global.setContacts(Global.getContact(<#T##email: String##String#>))
+                self.performSegueWithIdentifier("StartToMap", sender: self)
+            } else {
+                self.showAlert("Das ist eine problem")
+            }
         }
     }
 }
