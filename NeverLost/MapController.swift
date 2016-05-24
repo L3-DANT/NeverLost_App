@@ -63,7 +63,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let parameters = getCheckOutParameters()
         let route = "services/sendmypos/" + longitude + "/" + latitude
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code != 200 {
                 print("Error -> \(result!["error"])")
             }
@@ -76,7 +76,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let parameters = getCheckOutParameters()
         let route = "authentication/logout"
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code == 200 {
                 setUserData(nil, token: nil)
                 Global.resetContacts()

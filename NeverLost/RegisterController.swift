@@ -31,8 +31,8 @@ class RegisterController: UIViewController {
         let parameters = ["email": email, "password": password] as Dictionary<String, String>
         let route = "services/createuser"
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code == 200 && result != nil {
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            if code == 200 {
                 let email = result!["email"]
                 let token = result!["token"]
                 setUserData(email, token: token)

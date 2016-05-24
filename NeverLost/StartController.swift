@@ -29,32 +29,34 @@ class StartController : UIViewController {
         let parameters = getCheckOutParameters()
         let route = "services/getfriendlist"
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code == 200 && result != nil {
-                for cpt in 0...result!.count {
-                    let email = result![cpt]!["email"] as? String
-                    let username = result![cpt]!["username"] as? String
-                    //let status = result![cpt]![""] as? String
-                    let longitude = result![cpt]!["lon"] as? CLLocationDegrees
-                    let latitude = result![cpt]!["lat"] as? CLLocationDegrees
+        sendRequestArray(route, parameters: parameters) { (code: Int, result: [NSDictionary]) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    for item: NSDictionary in result {
+                        let email = item["email"] as? String
+                        let username = item["username"] as? String
+                        //let status = result![cpt]![""] as? String
+                        let longitude = item["lon"] as? CLLocationDegrees
+                        let latitude = item["lat"] as? CLLocationDegrees
+                        
+                        let contact = Contact(email: email!, status: 0, username: username!, longitude: longitude!, latitude: latitude!)
+                        
+                        Global.addContact(contact)
+                    }
                     
-                    let contact = Contact(email: email!, status: 0, username: username!, longitude: longitude!, latitude: latitude!)
-                    
-                    Global.addContact(contact)
+//                    for item in Global.getContacts() {
+//                        print("CONTACT")
+//                        print("email     -> " + item.getEmail())
+//                        print("status    -> " + String(item.getStatus()))
+//                        print("username  -> " + item.getUsername())
+//                        print("longitude -> " + item.getLongitude().description)
+//                        print("latitude  -> " + item.getLatitude().description)
+//                    }
+                    self.performSegueWithIdentifier("StartToMap", sender: self)
+                } else {
+                    self.showAlert(result.first!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
                 }
-                
-                for item in Global.getContacts() {
-                    print("CONTACT")
-                    print("email     -> " + item.getEmail())
-                    print("status    -> " + String(item.getStatus()))
-                    print("username  -> " + item.getUsername())
-                    print("longitude -> " + item.getLongitude().description)
-                    print("latitude  -> " + item.getLatitude().description)
-                }
-                self.performSegueWithIdentifier("StartToMap", sender: self)
-            } else {
-                self.showAlert(result!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
-            }
+            })
         }
     }
 }
