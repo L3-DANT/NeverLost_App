@@ -43,6 +43,4 @@ class RegisterController: UIViewController {
             }
         }
     }
-    
-    private func ReCommitDueToFalseDate() -> Void {}
 }

@@ -86,6 +86,4 @@ class MapController : UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
-    private func ReCommitDueToFalseDate() -> Void {}
 }

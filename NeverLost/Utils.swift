@@ -10,8 +10,6 @@ import Foundation
 
 public typealias ServiceResponse = (Int, NSDictionary?) -> Void
 
-private func ReCommitDueToFalseDate() -> Void {}
-
 /// Read the NSUserDefaults
 /// - Returns Email and token
 public func getUserData() -> (email: String?, token: String?) {
@@ -57,7 +55,7 @@ func checkEmail(email: String) -> Bool {
 /// - Parameter callback ServiceResponse
 /// - Returns Void
 public func callUrlWithData(route: String, parameters: Dictionary<String, String>, callback: ServiceResponse) -> Void {
-    let request = NSMutableURLRequest(URL: NSURL(string: "http://127.0.0.1:8080/NeverLost/rest/" + route)!)
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://134.157.120.99:8080/NeverLost/rest/" + route)!)
     let session = NSURLSession.sharedSession()
     request.HTTPMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")

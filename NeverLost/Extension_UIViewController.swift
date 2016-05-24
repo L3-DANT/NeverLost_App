@@ -10,15 +10,20 @@ import UIKit
 import Foundation
 
 extension UIViewController {
-    public func showAlert(message: String, button: String) {
+    public func showAlert(message: String, button: String, action: String? = nil) {
         let alert = UIAlertController(title : "Attention", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+        var buttonAction: UIAlertAction
         
-        let button = UIAlertAction(title: button, style: UIAlertActionStyle.Default, handler: nil )
+        if action != nil {
+            buttonAction = UIAlertAction(title: button, style: UIAlertActionStyle.Default) { UIAlertAction in
+                self.performSegueWithIdentifier(action!, sender: self)
+            }
+        } else {
+            buttonAction = UIAlertAction(title: button, style: UIAlertActionStyle.Default, handler: nil )
+        }
         
-        alert.addAction(button)
+        alert.addAction(buttonAction)
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    private func ReCommitDueToFalseDate() -> Void {}
 }

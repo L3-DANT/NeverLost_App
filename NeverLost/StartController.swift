@@ -53,11 +53,8 @@ class StartController : UIViewController {
                 }
                 self.performSegueWithIdentifier("StartToMap", sender: self)
             } else {
-                self.showAlert(result!["error"]! as! String, button: "Se connecter")
-                self.performSegueWithIdentifier("StartToLogin", sender: self)
+                self.showAlert(result!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
             }
         }
     }
-    
-    private func ReCommitDueToFalseDate() -> Void {}
 }

@@ -16,8 +16,6 @@ public class Contact : Hashable {
     private var longitude: CLLocationDegrees
     private var latitude: CLLocationDegrees
     
-    private func ReCommitDueToFalseDate() -> Void {}
-    
 //    public init(email: String) {
 //        self.email = email
 //        status = -2
