@@ -13,6 +13,8 @@ public class Global {
     
     private static var contacts: Set<Contact> = Set<Contact>()
     
+    private func ReCommitDueToFalseDate() -> Void {}
+    
     public static func getContacts() -> Set<Contact> {
         return contacts
     }

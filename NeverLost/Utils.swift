@@ -10,6 +10,8 @@ import Foundation
 
 public typealias ServiceResponse = (Int, NSDictionary?) -> Void
 
+private func ReCommitDueToFalseDate() -> Void {}
+
 /// Read the NSUserDefaults
 /// - Returns Email and token
 public func getUserData() -> (email: String?, token: String?) {

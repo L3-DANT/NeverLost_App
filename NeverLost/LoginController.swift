@@ -52,4 +52,6 @@ class LoginController: UIViewController {
             }
         }
     }
+    
+    private func ReCommitDueToFalseDate() -> Void {}
 }
