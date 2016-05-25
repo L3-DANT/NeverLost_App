@@ -14,7 +14,7 @@ class RegisterController: UIViewController {
     @IBOutlet weak var fieldEmail: UITextField!
     @IBOutlet weak var fieldPassword: UITextField!
     @IBOutlet weak var fieldConfirmation: UITextField!
-
+    
     @IBAction func buttonRegister(sender: UIButton) {
         if fieldEmail.text!.isEmpty {
             self.showAlert("L'email est obligatoire.", button: "Ok")
@@ -32,15 +32,17 @@ class RegisterController: UIViewController {
         let route = "services/createuser"
         
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code == 200 {
-                let email = result!["email"]
-                let token = result!["token"]
-                setUserData(email, token: token)
-                Global.resetContacts()
-                self.performSegueWithIdentifier("RegisterToMap", sender: self)
-            } else {
-                self.showAlert("Cet adresse email est déjà utilisée.", button: "Retour")
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    let email = result!["email"]
+                    let token = result!["token"]
+                    setUserData(email, token: token)
+                    Global.resetContacts()
+                    self.performSegueWithIdentifier("RegisterToMap", sender: self)
+                } else {
+                    self.showAlert("Cet adresse email est déjà utilisée.", button: "Retour")
+                }
+            })
         }
     }
 }

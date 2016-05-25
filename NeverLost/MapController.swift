@@ -41,7 +41,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
             let distance = currentLocation?.distanceFromLocation(newLocation)
-            if distance > 10 {
+            if distance > 5 {
                 currentLocation = newLocation
                 sendPosition()
             }

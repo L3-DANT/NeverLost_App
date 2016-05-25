@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 import Foundation
 
 class LoginController: UIViewController {
     
     @IBOutlet weak var fieldEmail: UITextField!
-
+    
     @IBOutlet weak var fieldPassword: UITextField!
     
     @IBAction func buttonLogin(sender: UIButton) {
@@ -20,7 +21,6 @@ class LoginController: UIViewController {
         let password = fieldPassword.text!
         
         if email.isEmpty {
-            setUserData("leo@mail.com", token: "3c4f398f-e322-47b3-bfeb-77bff775981b")
             self.showAlert("L'email est obligatoire.", button: "Ok")
         } else if !checkEmail(email) {
             self.showAlert("Veuillez rentrer une adresse email valide.", button: "Ok")
@@ -41,9 +41,36 @@ class LoginController: UIViewController {
                     let email = result!["email"]
                     let token = result!["token"]
                     setUserData(email, token: token)
-                    self.performSegueWithIdentifier("LoginToMap", sender: self)
+                    self.getContacts()
                 } else {
                     self.showAlert("Champs incorrects", button: "Retour")
+                }
+            })
+        }
+    }
+    
+    private func getContacts() -> Void {
+        let parameters = getCheckOutParameters()
+        let route = "services/getfriendlist"
+        
+        sendRequestArray(route, parameters: parameters) { (code: Int, result: [NSDictionary]) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    for item: NSDictionary in result {
+                        let email = item["email"] as? String
+                        let username = item["username"] as? String
+                        let status = item["confirmed"] as? Int
+                        let longitude = item["lon"] as? CLLocationDegrees
+                        let latitude = item["lat"] as? CLLocationDegrees
+                        
+                        let contact = Contact(email: email!, status: status!, username: username!, longitude: longitude!, latitude: latitude!)
+                        
+                        Global.addContact(contact)
+                    }
+                    
+                    self.performSegueWithIdentifier("LoginToMap", sender: self)
+                } else {
+                    self.showAlert(result.first!["error"]! as! String, button: "Retour")
                 }
             })
         }

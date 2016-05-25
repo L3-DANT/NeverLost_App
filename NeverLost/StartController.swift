@@ -35,25 +35,18 @@ class StartController : UIViewController {
                     for item: NSDictionary in result {
                         let email = item["email"] as? String
                         let username = item["username"] as? String
-                        //let status = result![cpt]![""] as? String
+                        let status = item["confirmed"] as? Int
                         let longitude = item["lon"] as? CLLocationDegrees
                         let latitude = item["lat"] as? CLLocationDegrees
                         
-                        let contact = Contact(email: email!, status: 0, username: username!, longitude: longitude!, latitude: latitude!)
+                        let contact = Contact(email: email!, status: status!, username: username!, longitude: longitude!, latitude: latitude!)
                         
                         Global.addContact(contact)
                     }
                     
-//                    for item in Global.getContacts() {
-//                        print("CONTACT")
-//                        print("email     -> " + item.getEmail())
-//                        print("status    -> " + String(item.getStatus()))
-//                        print("username  -> " + item.getUsername())
-//                        print("longitude -> " + item.getLongitude().description)
-//                        print("latitude  -> " + item.getLatitude().description)
-//                    }
                     self.performSegueWithIdentifier("StartToMap", sender: self)
                 } else {
+                    setUserData(nil, token: nil)
                     self.showAlert(result.first!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
                 }
             })
