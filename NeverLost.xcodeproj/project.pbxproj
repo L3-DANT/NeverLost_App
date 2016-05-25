@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F852C771CF0660C00C640B6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C761CF0660C00C640B6 /* Contact.swift */; };
+		0F852C791CF0686E00C640B6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C781CF0686E00C640B6 /* Global.swift */; };
 		5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922587A1CE648D20028EED1 /* AppDelegate.swift */; };
 		592258801CE648D20028EED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5922587E1CE648D20028EED1 /* Main.storyboard */; };
 		592258821CE648D20028EED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592258811CE648D20028EED1 /* Assets.xcassets */; };
@@ -14,7 +16,6 @@
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
-		59BCA19A1CE8E61C0080C894 /* Extension_CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
 		59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19F1CE8F5BD0080C894 /* contacts.png */; };
 		59BCA1A41CE8F5BD0080C894 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA1A01CE8F5BD0080C894 /* logout.png */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F852C761CF0660C00C640B6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		0F852C781CF0686E00C640B6 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		592258771CE648D20028EED1 /* NeverLost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeverLost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5922587A1CE648D20028EED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5922587F1CE648D20028EED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_CLLocation.swift; sourceTree = "<group>"; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
 		59BCA19F1CE8F5BD0080C894 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
 		59BCA1A01CE8F5BD0080C894 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F852C751CF065ED00C640B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F852C761CF0660C00C640B6 /* Contact.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		5922586E1CE648D20028EED1 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		592258791CE648D20028EED1 /* NeverLost */ = {
 			isa = PBXGroup;
 			children = (
+				0F852C751CF065ED00C640B6 /* Models */,
 				59BCA19D1CE8F3870080C894 /* Images */,
 				59FE72E31CE75C5000036D07 /* Library */,
 				5922587A1CE648D20028EED1 /* AppDelegate.swift */,
@@ -173,7 +184,7 @@
 			children = (
 				59FE72E41CE75C5F00036D07 /* Utils.swift */,
 				59FE72E61CE75C7900036D07 /* Extension_UIViewController.swift */,
-				59BCA1991CE8E61C0080C894 /* Extension_CLLocation.swift */,
+				0F852C781CF0686E00C640B6 /* Global.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -314,13 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F852C771CF0660C00C640B6 /* Contact.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
-				59BCA19A1CE8E61C0080C894 /* Extension_CLLocation.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
 				59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */,
 				5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */,
 				59FE72DE1CE75C2600036D07 /* StartController.swift in Sources */,
 				59FE72E51CE75C5F00036D07 /* Utils.swift in Sources */,
+				0F852C791CF0686E00C640B6 /* Global.swift in Sources */,
 				59FE72E71CE75C7900036D07 /* Extension_UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +520,7 @@
 		592258A61CE648D20028EED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
 				INFOPLIST_FILE = NeverLostUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLostUITests;
@@ -520,6 +533,7 @@
 		592258A71CE648D20028EED1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
 				INFOPLIST_FILE = NeverLostUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLostUITests;

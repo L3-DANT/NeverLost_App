@@ -41,7 +41,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
             let distance = currentLocation?.distanceFromLocation(newLocation)
-            if distance > 10 {
+            if distance > 5 {
                 currentLocation = newLocation
                 sendPosition()
             }
@@ -63,7 +63,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let parameters = getCheckOutParameters()
         let route = "services/sendmypos/" + longitude + "/" + latitude
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code != 200 {
                 print("Error -> \(result!["error"])")
             }
@@ -76,9 +76,10 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let parameters = getCheckOutParameters()
         let route = "authentication/logout"
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code == 200 {
                 setUserData(nil, token: nil)
+                Global.resetContacts()
                 self.performSegueWithIdentifier("MapToLogin", sender: self)
             } else {
                 print("Error -> \(result!["error"])")

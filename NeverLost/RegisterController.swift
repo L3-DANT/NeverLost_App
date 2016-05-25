@@ -14,14 +14,14 @@ class RegisterController: UIViewController {
     @IBOutlet weak var fieldEmail: UITextField!
     @IBOutlet weak var fieldPassword: UITextField!
     @IBOutlet weak var fieldConfirmation: UITextField!
-
+    
     @IBAction func buttonRegister(sender: UIButton) {
         if fieldEmail.text!.isEmpty {
-            self.showAlert("L'email est obligatoire.")
+            self.showAlert("L'email est obligatoire.", button: "Ok")
         } else if fieldPassword.text!.isEmpty {
-            self.showAlert("Le mot de passe est obligatoire.")
+            self.showAlert("Le mot de passe est obligatoire.", button: "Ok")
         } else if fieldConfirmation.text! != fieldPassword.text! {
-            self.showAlert("Les champs de mot de passe ne correspondent pas.")
+            self.showAlert("Les champs de mot de passe ne correspondent pas.", button: "Ok")
         } else {
             register(fieldEmail.text!, password: fieldPassword.text!)
         }
@@ -31,15 +31,18 @@ class RegisterController: UIViewController {
         let parameters = ["email": email, "password": password] as Dictionary<String, String>
         let route = "services/createuser"
         
-        callUrlWithData(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code == 200 && result != nil {
-                let email = result!["email"]
-                let token = result!["token"]
-                setUserData(email, token: token)
-                self.performSegueWithIdentifier("RegisterToMap", sender: self)
-            } else {
-                self.showAlert("Cet adresse email est déjà utilisée.")
-            }
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    let email = result!["email"]
+                    let token = result!["token"]
+                    setUserData(email, token: token)
+                    Global.resetContacts()
+                    self.performSegueWithIdentifier("RegisterToMap", sender: self)
+                } else {
+                    self.showAlert("Cet adresse email est déjà utilisée.", button: "Retour")
+                }
+            })
         }
     }
 }
