@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
+import PusherSwift
 
 class MapController : UIViewController, CLLocationManagerDelegate {
     var location = CLLocationManager()
@@ -36,6 +37,41 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         location.requestWhenInUseAuthorization()
         location.desiredAccuracy = kCLLocationAccuracyBest
         location.startUpdatingLocation()
+        
+        let pusher = Pusher(
+            key: "badd279471eca66c0f77",
+            options: [
+                "autoReconnect": true,
+                "encrypted": true
+            ]
+        )
+        let infos = getUserData()
+        let channel = pusher.subscribe(infos.email!)
+        
+        channel.bind("friendRequest", callback: { (data: AnyObject?) -> Void in
+            print("message received: (data)")
+        })
+        
+        channel.bind("friendConfirm", callback: { (data: AnyObject?) -> Void in
+            print("message received: (data)")
+        })
+        
+        channel.bind("updatePos", callback: { (data: AnyObject?) -> Void in
+            guard data != nil else {
+                return
+            }
+            
+            let email = data!["email"] as? String
+            let lastSync = data!["date"] as? NSDate
+            let longitude = data!["lon"] as? CLLocationDegrees
+            let latitude = data!["lat"] as? CLLocationDegrees
+            
+            Global.setContact(email!, lastSync: lastSync!, longitude: longitude!, latitude: latitude!)
+            
+            //TODO: change location of contact on map
+        })
+        
+        pusher.connect()
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {

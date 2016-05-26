@@ -11,23 +11,18 @@ import Foundation
 
 public class Contact : Hashable {
     private var email: String
-    private var status: Int
     private var username : String
+    private var status: Int
+    private var lastSync: NSDate
     private var longitude: CLLocationDegrees
     private var latitude: CLLocationDegrees
     
-//    public init(email: String) {
-//        self.email = email
-//        status = -2
-//        username = ""
-//        longitude = CLLocationDegrees()
-//        latitude = CLLocationDegrees()
-//    }
-    
     public init(email: String, status: Int , username : String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
         self.email = email
-        self.status = status
         self.username = username
+        self.status = status
+        //TODO: Get date from database
+        self.lastSync = NSDate()
         self.longitude = longitude
         self.latitude = latitude
     }
@@ -40,12 +35,28 @@ public class Contact : Hashable {
         self.email = email
     }
     
+    public func getUsername () -> String {
+        return username
+    }
+    
+    public func setUsername( username : String) -> Void {
+        self.username = username
+    }
+    
     public func getStatus() -> Int {
         return status
     }
     
     public func setStatus(status: Int) -> Void {
         self.status = status
+    }
+    
+    public func getLastSync() -> NSDate {
+        return lastSync
+    }
+    
+    public func setLastSync(lastSync: NSDate) -> Void {
+        self.lastSync = lastSync
     }
     
     public func getLongitude() -> CLLocationDegrees {
@@ -62,14 +73,6 @@ public class Contact : Hashable {
     
     public func setLatitude(latitude: CLLocationDegrees) -> Void {
         self.latitude = latitude
-    }
-    
-    public func getUsername () -> String {
-        return username
-    }
-    
-    public func setUsername( username : String) -> Void {
-        self.username = username
     }
     
     public var hashValue : Int {

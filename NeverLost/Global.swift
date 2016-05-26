@@ -39,17 +39,24 @@ public class Global {
         }
     }
     
-    public static func setContact(email: String, status: Int? = nil, username : String? = nil, longitude: CLLocationDegrees? = nil, latitude: CLLocationDegrees? = nil) -> Void {
+    public static func setContact(email: String, username : String? = nil, status: Int? = nil, lastSync: NSDate? = nil, longitude: CLLocationDegrees? = nil, latitude: CLLocationDegrees? = nil) -> Void {
         if let contact = getContact(email) {
-            if status != nil {
-                contact.setStatus(status!)
-            }
             if username != nil {
                 contact.setUsername(username!)
             }
+            
+            if status != nil {
+                contact.setStatus(status!)
+            }
+            
+            if lastSync != nil {
+                contact.setLastSync(lastSync!)
+            }
+            
             if longitude != nil {
                 contact.setLongitude(longitude!)
             }
+            
             if latitude != nil {
                 contact.setLatitude(latitude!)
             }
