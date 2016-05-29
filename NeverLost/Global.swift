@@ -13,8 +13,20 @@ public class Global {
     
     private static var contacts: Set<Contact> = Set<Contact>()
     
-    public static func getContacts() -> Set<Contact> {
-        return contacts
+    //    public static func getContacts() -> Set<Contact> {
+    //        return contacts
+    //    }
+    
+    public static func getFriends() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == 1})
+    }
+    
+    public static func getIncoming() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == -1})
+    }
+    
+    public static func getOutcoming() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == 0})
     }
     
     public static func setContacts(contacts: Set<Contact>) -> Void {

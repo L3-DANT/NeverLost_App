@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F112E931CF75CC3002BC93B /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112E921CF75CC3002BC93B /* ContactsController.swift */; };
+		0F112E971CF8F255002BC93B /* FriendTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112E961CF8F255002BC93B /* FriendTabCell.swift */; };
+		0F112EA21CF9F3B9002BC93B /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EA11CF9F3B9002BC93B /* addContact.png */; };
+		0F112EA41CF9F3D3002BC93B /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EA31CF9F3D3002BC93B /* friend.png */; };
+		0F112EA61CF9F3DE002BC93B /* retour.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EA51CF9F3DE002BC93B /* retour.png */; };
+		0F112EAA1CF9F4F1002BC93B /* incoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EA91CF9F4F1002BC93B /* incoming.png */; };
+		0F112EAC1CF9F509002BC93B /* outcoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EAB1CF9F509002BC93B /* outcoming.png */; };
+		0F112EB41CF9FC9C002BC93B /* ViewFriendTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F112EB31CF9FC9C002BC93B /* ViewFriendTabCell.xib */; };
+		0F112EB61CFB0489002BC93B /* IncomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112EB51CFB0489002BC93B /* IncomingController.swift */; };
+		0F112EB81CFB3DC1002BC93B /* OutcomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112EB71CFB3DC1002BC93B /* OutcomingController.swift */; };
+		0F112EBA1CFB3DE2002BC93B /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112EB91CFB3DE2002BC93B /* FriendController.swift */; };
+		0F112EBC1CFB3E07002BC93B /* AddfriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F112EBB1CFB3E07002BC93B /* AddfriendController.swift */; };
 		0F852C771CF0660C00C640B6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C761CF0660C00C640B6 /* Contact.swift */; };
 		0F852C791CF0686E00C640B6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C781CF0686E00C640B6 /* Global.swift */; };
 		5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922587A1CE648D20028EED1 /* AppDelegate.swift */; };
@@ -47,6 +59,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F112E921CF75CC3002BC93B /* ContactsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
+		0F112E961CF8F255002BC93B /* FriendTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTabCell.swift; sourceTree = "<group>"; };
+		0F112EA11CF9F3B9002BC93B /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addContact.png; sourceTree = "<group>"; };
+		0F112EA31CF9F3D3002BC93B /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
+		0F112EA51CF9F3DE002BC93B /* retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retour.png; sourceTree = "<group>"; };
+		0F112EA91CF9F4F1002BC93B /* incoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = incoming.png; sourceTree = "<group>"; };
+		0F112EAB1CF9F509002BC93B /* outcoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outcoming.png; sourceTree = "<group>"; };
+		0F112EB31CF9FC9C002BC93B /* ViewFriendTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewFriendTabCell.xib; path = ../ViewFriendTabCell.xib; sourceTree = "<group>"; };
+		0F112EB51CFB0489002BC93B /* IncomingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingController.swift; sourceTree = "<group>"; };
+		0F112EB71CFB3DC1002BC93B /* OutcomingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutcomingController.swift; sourceTree = "<group>"; };
+		0F112EB91CFB3DE2002BC93B /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
+		0F112EBB1CFB3E07002BC93B /* AddfriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddfriendController.swift; sourceTree = "<group>"; };
 		0F852C761CF0660C00C640B6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0F852C781CF0686E00C640B6 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		592258771CE648D20028EED1 /* NeverLost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeverLost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +169,13 @@
 				59FE72DF1CE75C3E00036D07 /* LoginController.swift */,
 				59FE72E11CE75C4B00036D07 /* RegisterController.swift */,
 				59FE72EA1CE76C9700036D07 /* MapController.swift */,
+				0F112E921CF75CC3002BC93B /* ContactsController.swift */,
+				0F112EB31CF9FC9C002BC93B /* ViewFriendTabCell.xib */,
+				0F112E961CF8F255002BC93B /* FriendTabCell.swift */,
+				0F112EB51CFB0489002BC93B /* IncomingController.swift */,
+				0F112EB71CFB3DC1002BC93B /* OutcomingController.swift */,
+				0F112EB91CFB3DE2002BC93B /* FriendController.swift */,
+				0F112EBB1CFB3E07002BC93B /* AddfriendController.swift */,
 			);
 			path = NeverLost;
 			sourceTree = "<group>";
@@ -170,6 +201,11 @@
 		59BCA19D1CE8F3870080C894 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0F112EAB1CF9F509002BC93B /* outcoming.png */,
+				0F112EA91CF9F4F1002BC93B /* incoming.png */,
+				0F112EA51CF9F3DE002BC93B /* retour.png */,
+				0F112EA31CF9F3D3002BC93B /* friend.png */,
+				0F112EA11CF9F3B9002BC93B /* addContact.png */,
 				59BCA19E1CE8F5BD0080C894 /* centeronme.png */,
 				59BCA19F1CE8F5BD0080C894 /* contacts.png */,
 				59BCA1A01CE8F5BD0080C894 /* logout.png */,
@@ -294,13 +330,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */,
+				0F112EAC1CF9F509002BC93B /* outcoming.png in Resources */,
 				592258851CE648D20028EED1 /* LaunchScreen.storyboard in Resources */,
 				59FE72E91CE76BC000036D07 /* loading_wolf.gif in Resources */,
+				0F112EA61CF9F3DE002BC93B /* retour.png in Resources */,
 				592258821CE648D20028EED1 /* Assets.xcassets in Resources */,
 				59BCA1A41CE8F5BD0080C894 /* logout.png in Resources */,
 				592258801CE648D20028EED1 /* Main.storyboard in Resources */,
+				0F112EA41CF9F3D3002BC93B /* friend.png in Resources */,
 				59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */,
+				0F112EAA1CF9F4F1002BC93B /* incoming.png in Resources */,
 				59BCA1A51CE8F5BD0080C894 /* profile.png in Resources */,
+				0F112EA21CF9F3B9002BC93B /* addContact.png in Resources */,
+				0F112EB41CF9FC9C002BC93B /* ViewFriendTabCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,15 +367,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F112EB81CFB3DC1002BC93B /* OutcomingController.swift in Sources */,
+				0F112EBA1CFB3DE2002BC93B /* FriendController.swift in Sources */,
 				0F852C771CF0660C00C640B6 /* Contact.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
+				0F112E971CF8F255002BC93B /* FriendTabCell.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
 				59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */,
 				5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */,
 				59FE72DE1CE75C2600036D07 /* StartController.swift in Sources */,
 				59FE72E51CE75C5F00036D07 /* Utils.swift in Sources */,
+				0F112E931CF75CC3002BC93B /* ContactsController.swift in Sources */,
+				0F112EBC1CFB3E07002BC93B /* AddfriendController.swift in Sources */,
 				0F852C791CF0686E00C640B6 /* Global.swift in Sources */,
 				59FE72E71CE75C7900036D07 /* Extension_UIViewController.swift in Sources */,
+				0F112EB61CFB0489002BC93B /* IncomingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NeverLost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -487,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NeverLost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
