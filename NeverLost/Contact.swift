@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import MapKit
 import Foundation
 
 public class Contact : Hashable {
@@ -14,17 +15,22 @@ public class Contact : Hashable {
     private var username : String
     private var status: Int
     private var lastSync: NSDate
-    private var longitude: CLLocationDegrees
     private var latitude: CLLocationDegrees
+    private var longitude: CLLocationDegrees
     
-    public init(email: String, status: Int , username : String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
+    private var annotation: Pin
+    
+    public init(email: String, status: Int , username : String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         self.email = email
         self.username = username
         self.status = status
         //TODO: Get date from database
         self.lastSync = NSDate()
-        self.longitude = longitude
         self.latitude = latitude
+        self.longitude = longitude
+        
+        annotation = Pin(coordinate: CLLocationCoordinate2DMake(latitude, longitude), title: username, subtitle: email)
+//        updateAnnotation()
     }
     
     public func getEmail() -> String {
@@ -59,6 +65,14 @@ public class Contact : Hashable {
         self.lastSync = lastSync
     }
     
+    public func getLatitude() -> CLLocationDegrees {
+        return latitude
+    }
+    
+    public func setLatitude(latitude: CLLocationDegrees) -> Void {
+        self.latitude = latitude
+    }
+    
     public func getLongitude() -> CLLocationDegrees {
         return longitude
     }
@@ -67,12 +81,14 @@ public class Contact : Hashable {
         self.longitude = longitude
     }
     
-    public func getLatitude() -> CLLocationDegrees {
-        return latitude
+    public func getAnnotation() -> Pin {
+        return annotation
     }
     
-    public func setLatitude(latitude: CLLocationDegrees) -> Void {
-        self.latitude = latitude
+    public func updateAnnotation() -> Void {
+        annotation.title = self.username
+        annotation.subtitle = self.email
+        annotation.coordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude)
     }
     
     public var hashValue : Int {

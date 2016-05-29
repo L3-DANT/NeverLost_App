@@ -10,9 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
-import PusherSwift
 
-class MapController : UIViewController, CLLocationManagerDelegate {
+class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var location = CLLocationManager()
     var currentLocation: CLLocation? = nil
     
@@ -28,6 +27,8 @@ class MapController : UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        map.delegate = self
 
         currentLocation = CLLocation(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
         
@@ -38,40 +39,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         location.desiredAccuracy = kCLLocationAccuracyBest
         location.startUpdatingLocation()
         
-        let pusher = Pusher(
-            key: "badd279471eca66c0f77",
-            options: [
-                "autoReconnect": true,
-                "encrypted": true
-            ]
-        )
-        let infos = getUserData()
-        let channel = pusher.subscribe(infos.email!)
-        
-        channel.bind("friendRequest", callback: { (data: AnyObject?) -> Void in
-            print("message received: (data)")
-        })
-        
-        channel.bind("friendConfirm", callback: { (data: AnyObject?) -> Void in
-            print("message received: (data)")
-        })
-        
-        channel.bind("updatePos", callback: { (data: AnyObject?) -> Void in
-            guard data != nil else {
-                return
-            }
-            
-            let email = data!["email"] as? String
-            let lastSync = data!["date"] as? NSDate
-            let longitude = data!["lon"] as? CLLocationDegrees
-            let latitude = data!["lat"] as? CLLocationDegrees
-            
-            Global.setContact(email!, lastSync: lastSync!, longitude: longitude!, latitude: latitude!)
-            
-            //TODO: change location of contact on map
-        })
-        
-        pusher.connect()
+        showFriendsOnMap()
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -84,6 +52,54 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         }
     }
     
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//        let identifier = "MyPin"
+//        
+//        if annotation.isKindOfClass(MKUserLocation) {
+//            return nil
+//        }
+//        
+//        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
+//        
+//        // Reuse the annotation if possible
+//        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+//        
+//        if annotationView == nil {
+//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+//            annotationView!.canShowCallout = true
+//            annotationView!.image = UIImage(named: "friendMap")
+//            annotationView!.rightCalloutAccessoryView = detailButton
+//        } else {
+//            annotationView!.annotation = annotation
+//        }
+//        
+//        return annotationView
+//    }
+    
+    func mapView(mapView: MKMapView,
+                 viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+        
+        if annotation.isKindOfClass(Pin.self) {
+            let reuseIdentifier = "pin"
+            
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView!.canShowCallout = true
+            }
+            else {
+                annotationView!.annotation = annotation
+            }
+            
+            let customPointAnnotation = annotation as! Pin
+            annotationView!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
+            
+            return annotationView
+        } else {
+            return nil
+        }
+    }
+    
     private func centerOnMe() -> Void {
         let center = CLLocationCoordinate2D(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
         let width = 1000.0
@@ -91,6 +107,10 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegionMakeWithDistance(center, width, height)
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+    }
+    
+    private func showFriendsOnMap() -> Void {
+        map.addAnnotations(Global.getAnnotations())
     }
     
     private func sendPosition() -> Void {

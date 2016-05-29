@@ -39,7 +39,7 @@ public class Global {
         }
     }
     
-    public static func setContact(email: String, username : String? = nil, status: Int? = nil, lastSync: NSDate? = nil, longitude: CLLocationDegrees? = nil, latitude: CLLocationDegrees? = nil) -> Void {
+    public static func setContact(email: String, username : String? = nil, status: Int? = nil, lastSync: NSDate? = nil, latitude: CLLocationDegrees? = nil, longitude: CLLocationDegrees? = nil) -> Void {
         if let contact = getContact(email) {
             if username != nil {
                 contact.setUsername(username!)
@@ -52,16 +52,28 @@ public class Global {
             if lastSync != nil {
                 contact.setLastSync(lastSync!)
             }
+                        
+            if latitude != nil {
+                contact.setLatitude(latitude!)
+            }
             
             if longitude != nil {
                 contact.setLongitude(longitude!)
             }
             
-            if latitude != nil {
-                contact.setLatitude(latitude!)
-            }
+            contact.updateAnnotation()
         } else {
             
         }
+    }
+    
+    public static func getAnnotations() -> [Pin] {
+        var annotations = [Pin]()
+        
+        for contact: Contact in contacts {
+            annotations.append(contact.getAnnotation())
+        }
+        
+        return annotations
     }
 }

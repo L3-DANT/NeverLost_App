@@ -15,6 +15,9 @@
 		592258851CE648D20028EED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592258831CE648D20028EED1 /* LaunchScreen.storyboard */; };
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
+		596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D21CFB5A1500D33A97 /* PusherService.swift */; };
+		596497D71CFB818A00D33A97 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D61CFB818A00D33A97 /* Pin.swift */; };
+		596497D91CFB819600D33A97 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D81CFB819600D33A97 /* PinView.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
 		59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19F1CE8F5BD0080C894 /* contacts.png */; };
@@ -65,6 +68,9 @@
 		592258961CE648D20028EED1 /* NeverLostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeverLostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596497D21CFB5A1500D33A97 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
+		596497D61CFB818A00D33A97 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		596497D81CFB819600D33A97 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
 		59BCA19F1CE8F5BD0080C894 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				0F852C761CF0660C00C640B6 /* Contact.swift */,
+				596497D61CFB818A00D33A97 /* Pin.swift */,
+				596497D81CFB819600D33A97 /* PinView.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				59FE72E41CE75C5F00036D07 /* Utils.swift */,
 				59FE72E61CE75C7900036D07 /* Extension_UIViewController.swift */,
 				0F852C781CF0686E00C640B6 /* Global.swift */,
+				596497D21CFB5A1500D33A97 /* PusherService.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -400,6 +409,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */,
+				596497D71CFB818A00D33A97 /* Pin.swift in Sources */,
+				596497D91CFB819600D33A97 /* PinView.swift in Sources */,
 				0F852C771CF0660C00C640B6 /* Contact.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
@@ -552,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NeverLost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -564,6 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NeverLost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Niezashto.NeverLost;
 				PRODUCT_NAME = "$(TARGET_NAME)";

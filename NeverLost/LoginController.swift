@@ -63,10 +63,12 @@ class LoginController: UIViewController {
                         let longitude = item["lon"] as? CLLocationDegrees
                         let latitude = item["lat"] as? CLLocationDegrees
                         
-                        let contact = Contact(email: email!, status: status!, username: username!, longitude: longitude!, latitude: latitude!)
+                        let contact = Contact(email: email!, status: status!, username: username!, latitude: latitude!, longitude: longitude!)
                         
                         Global.addContact(contact)
                     }
+                    
+                    //TODO: PusherService.start()
                     
                     self.performSegueWithIdentifier("LoginToMap", sender: self)
                 } else {
