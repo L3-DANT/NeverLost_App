@@ -42,6 +42,8 @@ class LoginController: UIViewController {
                     let token = result!["token"]
                     setUserData(email, token: token)
                     self.getContacts()
+                } else if code == 403 {
+                    self.showAlert("Vous n'avez pas encore validé votre compte.", button: "Retour")
                 } else {
                     self.showAlert("Champs incorrects", button: "Retour")
                 }
@@ -57,14 +59,7 @@ class LoginController: UIViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 if code == 200 {
                     for item: NSDictionary in result {
-                        let email = item["email"] as? String
-                        let username = item["username"] as? String
-                        let status = item["confirmed"] as? Int
-                        let longitude = item["lon"] as? CLLocationDegrees
-                        let latitude = item["lat"] as? CLLocationDegrees
-                        
-                        let contact = Contact(email: email!, status: status!, username: username!, latitude: latitude!, longitude: longitude!)
-                        
+                        let contact = JsonToContact(item)
                         Global.addContact(contact)
                     }
                     

@@ -16,13 +16,13 @@
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
 		596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D21CFB5A1500D33A97 /* PusherService.swift */; };
-		596497D71CFB818A00D33A97 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D61CFB818A00D33A97 /* Pin.swift */; };
-		596497D91CFB819600D33A97 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D81CFB819600D33A97 /* PinView.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
 		59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19F1CE8F5BD0080C894 /* contacts.png */; };
 		59BCA1A41CE8F5BD0080C894 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA1A01CE8F5BD0080C894 /* logout.png */; };
 		59BCA1A51CE8F5BD0080C894 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA1A11CE8F5BD0080C894 /* profile.png */; };
+		59F526B91CFCB8EF00D106B3 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F526B81CFCB8EF00D106B3 /* Pin.swift */; };
+		59F526BB1CFCB9A800D106B3 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F526BA1CFCB9A800D106B3 /* PinView.swift */; };
 		59FE72DE1CE75C2600036D07 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72DD1CE75C2600036D07 /* StartController.swift */; };
 		59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72DF1CE75C3E00036D07 /* LoginController.swift */; };
 		59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE72E11CE75C4B00036D07 /* RegisterController.swift */; };
@@ -69,20 +69,20 @@
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596497D21CFB5A1500D33A97 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
-		596497D61CFB818A00D33A97 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
-		596497D81CFB819600D33A97 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
 		59BCA19F1CE8F5BD0080C894 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
 		59BCA1A01CE8F5BD0080C894 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		59BCA1A11CE8F5BD0080C894 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		59F526B81CFCB8EF00D106B3 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		59F526BA1CFCB9A800D106B3 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		59FE72DD1CE75C2600036D07 /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		59FE72DF1CE75C3E00036D07 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		59FE72E11CE75C4B00036D07 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		59FE72E41CE75C5F00036D07 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		59FE72E61CE75C7900036D07 /* Extension_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_UIViewController.swift; sourceTree = "<group>"; };
 		59FE72E81CE76BC000036D07 /* loading_wolf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_wolf.gif; sourceTree = "<group>"; };
-		59FE72EA1CE76C9700036D07 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		59FE72EA1CE76C9700036D07 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				0F852C761CF0660C00C640B6 /* Contact.swift */,
-				596497D61CFB818A00D33A97 /* Pin.swift */,
-				596497D81CFB819600D33A97 /* PinView.swift */,
+				59F526B81CFCB8EF00D106B3 /* Pin.swift */,
+				59F526BA1CFCB9A800D106B3 /* PinView.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -410,10 +410,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */,
-				596497D71CFB818A00D33A97 /* Pin.swift in Sources */,
-				596497D91CFB819600D33A97 /* PinView.swift in Sources */,
 				0F852C771CF0660C00C640B6 /* Contact.swift in Sources */,
+				59F526B91CFCB8EF00D106B3 /* Pin.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
+				59F526BB1CFCB9A800D106B3 /* PinView.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
 				59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */,
 				5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */,

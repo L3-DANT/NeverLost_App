@@ -8,5 +8,6 @@ target 'NeverLost' do
 
   # Pods for NeverLost
   pod 'PusherSwift'
+  pod 'BRYXBanner'
 
 end

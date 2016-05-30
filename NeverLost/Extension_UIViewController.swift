@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 extension UIViewController {
-    public func showAlert(message: String, button: String, action: String? = nil) {
+    func showAlert(message: String, button: String, action: String? = nil) {
         let alert = UIAlertController(title : "Attention", message: message, preferredStyle:UIAlertControllerStyle.Alert)
         var buttonAction: UIAlertAction
         

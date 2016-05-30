@@ -24,16 +24,16 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func buttonCenterOnMe(sender: UIButton) {
         centerOnMe()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         map.delegate = self
-
+        
         currentLocation = CLLocation(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
         
         centerOnMe()
-
+        
         location.delegate = self
         location.requestWhenInUseAuthorization()
         location.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,7 +44,7 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
-            let distance = currentLocation?.distanceFromLocation(newLocation)
+            let distance = currentLocation!.distanceFromLocation(newLocation)
             if distance > 5 {
                 currentLocation = newLocation
                 sendPosition()
@@ -52,48 +52,17 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-//        let identifier = "MyPin"
-//        
-//        if annotation.isKindOfClass(MKUserLocation) {
-//            return nil
-//        }
-//        
-//        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
-//        
-//        // Reuse the annotation if possible
-//        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-//        
-//        if annotationView == nil {
-//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-//            annotationView!.canShowCallout = true
-//            annotationView!.image = UIImage(named: "friendMap")
-//            annotationView!.rightCalloutAccessoryView = detailButton
-//        } else {
-//            annotationView!.annotation = annotation
-//        }
-//        
-//        return annotationView
-//    }
-    
-    func mapView(mapView: MKMapView,
-                 viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
-        
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation.isKindOfClass(Pin.self) {
-            let reuseIdentifier = "pin"
-            
+            let reuseIdentifier = String(annotation.subtitle)
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            
             if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView = PinView(annotation: annotation, reuseIdentifier: reuseIdentifier)
                 annotationView!.canShowCallout = true
-            }
-            else {
+            } else {
                 annotationView!.annotation = annotation
             }
-            
-            let customPointAnnotation = annotation as! Pin
-            annotationView!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
-            
             return annotationView
         } else {
             return nil
@@ -107,17 +76,23 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region = MKCoordinateRegionMakeWithDistance(center, width, height)
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+
+        let incoming = Global.getIncoming()
+        let friends = Global.getFriends()
+        let outcoming = Global.getOutcoming()
+        map.addAnnotations(Global.getFriendsAnnotations())
     }
     
     private func showFriendsOnMap() -> Void {
-        map.addAnnotations(Global.getAnnotations())
+        map.addAnnotations(Global.getFriendsAnnotations())
     }
     
     private func sendPosition() -> Void {
-        let longitude: String = (currentLocation?.coordinate.longitude.description)!
         let latitude: String = (currentLocation?.coordinate.latitude.description)!
+        let longitude: String = (currentLocation?.coordinate.longitude.description)!
+        
         let parameters = getCheckOutParameters()
-        let route = "services/sendmypos/" + longitude + "/" + latitude
+        let route = "services/sendmypos/" + latitude + "/" + longitude
         
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code != 200 {

@@ -2,7 +2,7 @@
 //  PinView.swift
 //  NeverLost
 //
-//  Created by Milan Antonijevic on 29/05/2016.
+//  Created by Milan Antonijevic on 30/05/2016.
 //  Copyright © 2016 Milan Antonijevic. All rights reserved.
 //
 
@@ -10,18 +10,15 @@ import UIKit
 import MapKit
 import Foundation
 
-class UserAnnotationView: MKAnnotationView {
-    
-    let selectedLabel:UILabel = UILabel.init(frame:CGRectMake(0, 0, 140, 40))
+class PinView : MKAnnotationView {
+    let selectedLabel: UILabel = UILabel.init(frame:CGRectMake(0, 0, 140, 40))
     
     var text : String?
     
-    override func setSelected(selected: Bool, animated: Bool)
-    {
+    override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(false, animated: animated)
         
-        if(selected)
-        {
+        if (selected) {
             // Do customization, for example:
             selectedLabel.text = (self.annotation?.title)!
             selectedLabel.textColor = UIColor.whiteColor()
@@ -38,9 +35,7 @@ class UserAnnotationView: MKAnnotationView {
             selectedLabel.center.y = -0.5 * selectedLabel.frame.height;
             
             self.addSubview(selectedLabel)
-        }
-        else
-        {
+        } else {
             selectedLabel.removeFromSuperview()
         }
     }
