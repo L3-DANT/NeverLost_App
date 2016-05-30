@@ -16,6 +16,17 @@ public class Global {
     public static func getContacts() -> Set<Contact> {
         return contacts
     }
+    public static func getFriends() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == 1})
+    }
+    
+    public static func getIncoming() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == -1})
+    }
+    
+    public static func getOutcoming() -> [Contact] {
+        return contacts.filter({ $0.getStatus() == 0})
+    }
     
     public static func setContacts(contacts: Set<Contact>) -> Void {
         self.contacts = contacts
@@ -39,28 +50,24 @@ public class Global {
         }
     }
     
-    public static func setContact(email: String, username : String? = nil, status: Int? = nil, lastSync: NSDate? = nil, latitude: CLLocationDegrees? = nil, longitude: CLLocationDegrees? = nil) -> Void {
+    public static func setContact(email: String, status: Int? = nil, username : String? = nil,latitude: CLLocationDegrees? = nil, longitude: CLLocationDegrees? = nil, lastSync: NSDate? = nil) -> Void {
         if let contact = getContact(email) {
+            if status != nil {
+                contact.setStatus(status!)
+            }
             if username != nil {
                 contact.setUsername(username!)
             }
-            
-            if status != nil {
-                contact.setStatus(status!)
+            if latitude != nil {
+                contact.setLatitude(latitude!)
+            }
+            if longitude != nil {
+                contact.setLongitude(longitude!)
             }
             
             if lastSync != nil {
                 contact.setLastSync(lastSync!)
             }
-                        
-            if latitude != nil {
-                contact.setLatitude(latitude!)
-            }
-            
-            if longitude != nil {
-                contact.setLongitude(longitude!)
-            }
-            
             contact.updateAnnotation()
         } else {
             
