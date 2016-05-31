@@ -174,7 +174,7 @@ func sendRequestArray(route: String, parameters: Dictionary<String, String>, cal
                             for item: [String : AnyObject] in json {
                                 result.append(item)
                             }
-                            callback(statusCode, result)
+                            callback(statusCode, json)
                         }
                     } catch {
                         callback(statusCode, result)

@@ -1,4 +1,4 @@
-//
+﻿//
 //  Global.swift
 //  NeverLost
 //
@@ -15,6 +15,7 @@ class Global {
     
     static func getFriends() -> [Contact] {
         return contacts.filter({ $0.status == 1})
+
     }
     
     static func getIncoming() -> [Contact] {
