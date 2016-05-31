@@ -6,7 +6,7 @@
 //  Copyright © 2016 Milan Antonijevic. All rights reserved.
 //
 
-import CoreLocation
+import MapKit
 import Foundation
 
 class Global {
@@ -33,7 +33,7 @@ class Global {
         contacts.removeAll()
     }
     
-    private static func getContact(email: String) -> Contact? {
+    static func getContact(email: String) -> Contact? {
         let tabFiltered = contacts.filter({ $0.email == email })
         
         if tabFiltered.isEmpty {
@@ -68,11 +68,25 @@ class Global {
         }
     }
     
-    static func getFriendsAnnotations() -> [Pin] {
-        var pins = [Pin]()
+//    static func getFriendsAnnotations() -> [Pin] {
+//        var pins = [Pin]()
+//        
+//        for contact: Contact in getFriends() {
+//            pins.append(Pin(coordinate: contact.coordinate, title: contact.username, subtitle: contact.email))
+//        }
+//        
+//        return pins
+//    }
+    
+    static func getFriendsAnnotations() -> [MKPointAnnotation] {
+        var pins = [MKPointAnnotation]()
         
         for contact: Contact in getFriends() {
-            pins.append(Pin(coordinate: contact.coordinate, title: contact.username, subtitle: contact.email))
+            let pin = MKPointAnnotation()
+            pin.coordinate = contact.coordinate
+            pin.title = contact.username
+            pin.subtitle = contact.email
+            pins.append(pin)
         }
         
         return pins

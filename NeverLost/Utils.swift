@@ -72,7 +72,9 @@ func JsonToContact(json: NSDictionary) -> Contact {
 }
 
 func getRequest(route: String, parameters: Dictionary<String, String>) -> (success: Bool, request: NSMutableURLRequest) {
-    let request = NSMutableURLRequest(URL: NSURL(string: "http://127.0.0.1:8080/NeverLost/rest/" + route)!)
+    let adress = "134.157.121.53"
+    let port = "8080"
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://" + adress + ":" + port + "/NeverLost/rest/" + route)!)
     request.HTTPMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")

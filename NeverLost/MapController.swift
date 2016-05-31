@@ -28,6 +28,8 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PusherService.initMap(map)
+        
         map.delegate = self
         
         currentLocation = CLLocation(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
@@ -53,12 +55,13 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.isKindOfClass(Pin.self) {
-            let reuseIdentifier = String(annotation.subtitle)
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+        if annotation.isKindOfClass(Contact.self) {
+//            let reuseId = String(annotation.subtitle)
+            let reuseId = "friendPin"
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
             
             if annotationView == nil {
-                annotationView = PinView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                 annotationView!.canShowCallout = true
             } else {
                 annotationView!.annotation = annotation
@@ -77,14 +80,17 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
 
-        let incoming = Global.getIncoming()
-        let friends = Global.getFriends()
-        let outcoming = Global.getOutcoming()
-        map.addAnnotations(Global.getFriendsAnnotations())
+        map.addAnnotations(Global.getFriends())
     }
     
     private func showFriendsOnMap() -> Void {
-        map.addAnnotations(Global.getFriendsAnnotations())
+        map.addAnnotations(Global.getFriends())
+        
+        for friend: Contact in Global.getFriends() {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.map.addAnnotation(friend)
+            }
+        }
     }
     
     private func sendPosition() -> Void {
@@ -111,6 +117,7 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if code == 200 {
                 setUserData(nil, token: nil)
                 Global.resetContacts()
+                PusherService.stop()
                 self.performSegueWithIdentifier("MapToLogin", sender: self)
             } else {
                 print("Error -> \(result!["error"])")

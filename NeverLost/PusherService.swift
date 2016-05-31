@@ -11,11 +11,15 @@ import BRYXBanner
 import MapKit
 import Foundation
 
-public class PusherService {
+class PusherService {
     private static let app_key: String = "badd279471eca66c0f77"
+    private static var pusher: Pusher? = nil
+    private static var channel: PusherChannel? = nil
     
-    public static func start() {
-        let pusher = Pusher(
+    private static var map: MKMapView? = nil
+    
+    static func start() {
+        pusher = Pusher(
             key: app_key,
             options: [
                 "autoReconnect": true,
@@ -24,9 +28,9 @@ public class PusherService {
         )
         
         let infos = getUserData()
-        let channel = pusher.subscribe(infos.email!)
+        channel = pusher!.subscribe(infos.email!)
         
-        channel.bind("friendRequest", callback: { (data: AnyObject?) -> Void in
+        channel!.bind("friendRequest", callback: { (data: AnyObject?) -> Void in
             let email = data!["email"] as? String
             let username = data!["username"] as? String
             
@@ -51,7 +55,7 @@ public class PusherService {
             banner.show(duration: 5.0)
         })
         
-        channel.bind("friendConfirm", callback: { (data: AnyObject?) -> Void in
+        channel!.bind("friendConfirm", callback: { (data: AnyObject?) -> Void in
             let email = data!["email"] as? String
             let username = data!["username"] as? String
             
@@ -75,7 +79,7 @@ public class PusherService {
             banner.show(duration: 5.0)
         })
         
-        channel.bind("updatePos", callback: { (data: AnyObject?) -> Void in
+        channel!.bind("updatePos", callback: { (data: AnyObject?) -> Void in
             let email = data!["email"] as? String
             
             let longitude = (data!["lon"] as? NSString)!.doubleValue
@@ -89,9 +93,23 @@ public class PusherService {
             
             Global.updatePosition(email!, coordinate: coordinate, lastSync: lastSync!)
             
-            //TODO: change location of contact on map
+            if map != nil {
+                if let friend = Global.getContact(email!) {
+                    map!.removeAnnotation(friend)
+                    map!.addAnnotation(friend)
+                }
+            }
         })
         
-        pusher.connect()
+        pusher!.connect()
+    }
+    
+    static func initMap(map: MKMapView) {
+        self.map = map
+    }
+    
+    static func stop() -> Void {
+        channel!.unbindAll()
+        pusher!.disconnect()
     }
 }
