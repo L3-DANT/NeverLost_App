@@ -25,7 +25,6 @@
 		59A02F6C1CFDFB34006221F3 /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F681CFDFB34006221F3 /* addContact.png */; };
 		59A02F6D1CFDFB34006221F3 /* incoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F691CFDFB34006221F3 /* incoming.png */; };
 		59A02F6E1CFDFB34006221F3 /* outcoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F6A1CFDFB34006221F3 /* outcoming.png */; };
-		59A02F6F1CFDFB34006221F3 /* retour.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F6B1CFDFB34006221F3 /* retour.png */; };
 		59A02F711CFE365D006221F3 /* Extension_UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F701CFE365D006221F3 /* Extension_UIApplication.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
@@ -89,7 +88,6 @@
 		59A02F681CFDFB34006221F3 /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addContact.png; sourceTree = "<group>"; };
 		59A02F691CFDFB34006221F3 /* incoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = incoming.png; sourceTree = "<group>"; };
 		59A02F6A1CFDFB34006221F3 /* outcoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outcoming.png; sourceTree = "<group>"; };
-		59A02F6B1CFDFB34006221F3 /* retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retour.png; sourceTree = "<group>"; };
 		59A02F701CFE365D006221F3 /* Extension_UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_UIApplication.swift; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				59A02F681CFDFB34006221F3 /* addContact.png */,
 				59A02F691CFDFB34006221F3 /* incoming.png */,
 				59A02F6A1CFDFB34006221F3 /* outcoming.png */,
-				59A02F6B1CFDFB34006221F3 /* retour.png */,
 				59BCA19E1CE8F5BD0080C894 /* centeronme.png */,
 				59BCA19F1CE8F5BD0080C894 /* contacts.png */,
 				59BCA1A01CE8F5BD0080C894 /* logout.png */,
@@ -373,7 +370,6 @@
 				592258801CE648D20028EED1 /* Main.storyboard in Resources */,
 				59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */,
 				59BCA1A51CE8F5BD0080C894 /* profile.png in Resources */,
-				59A02F6F1CFDFB34006221F3 /* retour.png in Resources */,
 				59A02F6C1CFDFB34006221F3 /* addContact.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
