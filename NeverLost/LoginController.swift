@@ -13,8 +13,13 @@ import Foundation
 class LoginController: UIViewController {
     
     @IBOutlet weak var fieldEmail: UITextField!
-    
     @IBOutlet weak var fieldPassword: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        hideBackButton()
+    }
     
     @IBAction func buttonLogin(sender: UIButton) {
         let email = fieldEmail.text!
@@ -63,7 +68,7 @@ class LoginController: UIViewController {
                         Global.addContact(contact)
                     }
                     
-                    //TODO: PusherService.start()
+                    PusherService.start()
                     
                     self.performSegueWithIdentifier("LoginToMap", sender: self)
                 } else {

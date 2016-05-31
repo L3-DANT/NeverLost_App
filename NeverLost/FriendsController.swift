@@ -1,5 +1,5 @@
 //
-//  IncomingController.swift
+//  FriendsController.swift
 //  NeverLost
 //
 //  Created by Milan Antonijevic on 31/05/2016.
@@ -9,23 +9,23 @@
 import UIKit
 import Foundation
 
-class IncomingController : UITableViewController {
-    var incomings = Global.getIncoming()
+class FriendsController : UITableViewController {
+    var friends = Global.getFriends()
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return incomings.count
+        return friends.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("IncomingCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath)
         
-        let incoming = incomings[indexPath.row] as Contact
-        cell.textLabel?.text = incoming.username
-        cell.detailTextLabel?.text = incoming.email
+        let friend = friends[indexPath.row] as Contact
+        cell.textLabel?.text = friend.username
+        cell.detailTextLabel?.text = friend.email
         return cell
     }
 }

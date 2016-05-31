@@ -12,6 +12,7 @@ import CoreLocation
 import Foundation
 
 class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
     var location = CLLocationManager()
     var currentLocation: CLLocation? = nil
     
@@ -27,6 +28,8 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideBackButton()
         
         PusherService.initMap(map)
         

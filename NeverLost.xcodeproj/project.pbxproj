@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F852C771CF0660C00C640B6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C761CF0660C00C640B6 /* Contact.swift */; };
 		0F852C791CF0686E00C640B6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F852C781CF0686E00C640B6 /* Global.swift */; };
+		59134EEC1CFE496800558D82 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59134EEB1CFE496800558D82 /* ProfileController.swift */; };
+		59134EEE1CFE4C4A00558D82 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59134EED1CFE4C4A00558D82 /* ContactsController.swift */; };
 		5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922587A1CE648D20028EED1 /* AppDelegate.swift */; };
 		592258801CE648D20028EED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5922587E1CE648D20028EED1 /* Main.storyboard */; };
 		592258821CE648D20028EED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592258811CE648D20028EED1 /* Assets.xcassets */; };
@@ -16,6 +18,15 @@
 		592258901CE648D20028EED1 /* NeverLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922588F1CE648D20028EED1 /* NeverLostTests.swift */; };
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
 		596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D21CFB5A1500D33A97 /* PusherService.swift */; };
+		59A02F591CFDDEE3006221F3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F581CFDDEE3006221F3 /* ErrorMessage.swift */; };
+		59A02F5B1CFDF9AA006221F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */; };
+		59A02F5D1CFDF9C1006221F3 /* IncomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */; };
+		59A02F5F1CFDF9D6006221F3 /* OutcomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F5E1CFDF9D6006221F3 /* OutcomingController.swift */; };
+		59A02F6C1CFDFB34006221F3 /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F681CFDFB34006221F3 /* addContact.png */; };
+		59A02F6D1CFDFB34006221F3 /* incoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F691CFDFB34006221F3 /* incoming.png */; };
+		59A02F6E1CFDFB34006221F3 /* outcoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F6A1CFDFB34006221F3 /* outcoming.png */; };
+		59A02F6F1CFDFB34006221F3 /* retour.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A02F6B1CFDFB34006221F3 /* retour.png */; };
+		59A02F711CFE365D006221F3 /* Extension_UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F701CFE365D006221F3 /* Extension_UIApplication.swift */; };
 		59BCA1981CE8A0800080C894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BCA1971CE8A0800080C894 /* MapKit.framework */; };
 		59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19E1CE8F5BD0080C894 /* centeronme.png */; };
 		59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 59BCA19F1CE8F5BD0080C894 /* contacts.png */; };
@@ -56,6 +67,8 @@
 		0F852C781CF0686E00C640B6 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		10B45C84E27D5F93176E499E /* Pods-NeverLost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeverLost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeverLost/Pods-NeverLost.debug.xcconfig"; sourceTree = "<group>"; };
 		3EEB754001671C6D8FF28C80 /* Pods-NeverLost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeverLost.release.xcconfig"; path = "Pods/Target Support Files/Pods-NeverLost/Pods-NeverLost.release.xcconfig"; sourceTree = "<group>"; };
+		59134EEB1CFE496800558D82 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		59134EED1CFE4C4A00558D82 /* ContactsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 		592258771CE648D20028EED1 /* NeverLost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeverLost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5922587A1CE648D20028EED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5922587F1CE648D20028EED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,7 +81,16 @@
 		592258961CE648D20028EED1 /* NeverLostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeverLostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5922589A1CE648D20028EED1 /* NeverLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverLostUITests.swift; sourceTree = "<group>"; };
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596497D21CFB5A1500D33A97 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
+		596497D21CFB5A1500D33A97 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		59A02F581CFDDEE3006221F3 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
+		59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingController.swift; sourceTree = "<group>"; };
+		59A02F5E1CFDF9D6006221F3 /* OutcomingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutcomingController.swift; sourceTree = "<group>"; };
+		59A02F681CFDFB34006221F3 /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addContact.png; sourceTree = "<group>"; };
+		59A02F691CFDFB34006221F3 /* incoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = incoming.png; sourceTree = "<group>"; };
+		59A02F6A1CFDFB34006221F3 /* outcoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outcoming.png; sourceTree = "<group>"; };
+		59A02F6B1CFDFB34006221F3 /* retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retour.png; sourceTree = "<group>"; };
+		59A02F701CFE365D006221F3 /* Extension_UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_UIApplication.swift; sourceTree = "<group>"; };
 		59BCA1971CE8A0800080C894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59BCA19E1CE8F5BD0080C894 /* centeronme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centeronme.png; sourceTree = "<group>"; };
 		59BCA19F1CE8F5BD0080C894 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
@@ -160,6 +182,11 @@
 				59FE72DF1CE75C3E00036D07 /* LoginController.swift */,
 				59FE72E11CE75C4B00036D07 /* RegisterController.swift */,
 				59FE72EA1CE76C9700036D07 /* MapController.swift */,
+				59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */,
+				59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */,
+				59A02F5E1CFDF9D6006221F3 /* OutcomingController.swift */,
+				59134EEB1CFE496800558D82 /* ProfileController.swift */,
+				59134EED1CFE4C4A00558D82 /* ContactsController.swift */,
 			);
 			path = NeverLost;
 			sourceTree = "<group>";
@@ -185,6 +212,10 @@
 		59BCA19D1CE8F3870080C894 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				59A02F681CFDFB34006221F3 /* addContact.png */,
+				59A02F691CFDFB34006221F3 /* incoming.png */,
+				59A02F6A1CFDFB34006221F3 /* outcoming.png */,
+				59A02F6B1CFDFB34006221F3 /* retour.png */,
 				59BCA19E1CE8F5BD0080C894 /* centeronme.png */,
 				59BCA19F1CE8F5BD0080C894 /* contacts.png */,
 				59BCA1A01CE8F5BD0080C894 /* logout.png */,
@@ -199,8 +230,10 @@
 			children = (
 				59FE72E41CE75C5F00036D07 /* Utils.swift */,
 				59FE72E61CE75C7900036D07 /* Extension_UIViewController.swift */,
+				59A02F701CFE365D006221F3 /* Extension_UIApplication.swift */,
 				0F852C781CF0686E00C640B6 /* Global.swift */,
 				596497D21CFB5A1500D33A97 /* PusherService.swift */,
+				59A02F581CFDDEE3006221F3 /* ErrorMessage.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -333,11 +366,15 @@
 				59BCA1A31CE8F5BD0080C894 /* contacts.png in Resources */,
 				592258851CE648D20028EED1 /* LaunchScreen.storyboard in Resources */,
 				59FE72E91CE76BC000036D07 /* loading_wolf.gif in Resources */,
+				59A02F6D1CFDFB34006221F3 /* incoming.png in Resources */,
 				592258821CE648D20028EED1 /* Assets.xcassets in Resources */,
+				59A02F6E1CFDFB34006221F3 /* outcoming.png in Resources */,
 				59BCA1A41CE8F5BD0080C894 /* logout.png in Resources */,
 				592258801CE648D20028EED1 /* Main.storyboard in Resources */,
 				59BCA1A21CE8F5BD0080C894 /* centeronme.png in Resources */,
 				59BCA1A51CE8F5BD0080C894 /* profile.png in Resources */,
+				59A02F6F1CFDFB34006221F3 /* retour.png in Resources */,
+				59A02F6C1CFDFB34006221F3 /* addContact.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,11 +452,18 @@
 				59F526B91CFCB8EF00D106B3 /* Pin.swift in Sources */,
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
 				59F526BB1CFCB9A800D106B3 /* PinView.swift in Sources */,
+				59134EEC1CFE496800558D82 /* ProfileController.swift in Sources */,
+				59A02F5B1CFDF9AA006221F3 /* FriendsController.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
+				59134EEE1CFE4C4A00558D82 /* ContactsController.swift in Sources */,
+				59A02F591CFDDEE3006221F3 /* ErrorMessage.swift in Sources */,
+				59A02F711CFE365D006221F3 /* Extension_UIApplication.swift in Sources */,
 				59FE72E01CE75C3E00036D07 /* LoginController.swift in Sources */,
 				5922587B1CE648D20028EED1 /* AppDelegate.swift in Sources */,
 				59FE72DE1CE75C2600036D07 /* StartController.swift in Sources */,
+				59A02F5D1CFDF9C1006221F3 /* IncomingController.swift in Sources */,
 				59FE72E51CE75C5F00036D07 /* Utils.swift in Sources */,
+				59A02F5F1CFDF9D6006221F3 /* OutcomingController.swift in Sources */,
 				0F852C791CF0686E00C640B6 /* Global.swift in Sources */,
 				59FE72E71CE75C7900036D07 /* Extension_UIViewController.swift in Sources */,
 			);
