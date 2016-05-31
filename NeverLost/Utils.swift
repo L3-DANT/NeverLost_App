@@ -6,14 +6,15 @@
 //  Copyright © 2016 Milan Antonijevic. All rights reserved.
 //
 
+import MapKit
 import Foundation
 
-public typealias ServiceResponseObject = (Int, NSDictionary?) -> Void
-public typealias ServiceResponseArray = (Int, [NSDictionary]) -> Void
+typealias ServiceResponseObject = (Int, NSDictionary?) -> Void
+typealias ServiceResponseArray = (Int, [NSDictionary]) -> Void
 
 /// Read the NSUserDefaults
 /// - Returns Email and token
-public func getUserData() -> (email: String?, token: String?) {
+func getUserData() -> (email: String?, token: String?) {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     let email = defaults.stringForKey("checkEmail")
@@ -24,7 +25,7 @@ public func getUserData() -> (email: String?, token: String?) {
 
 /// Read the dictionary needed to check the filter
 /// - Returns The dictionary
-public func getCheckOutParameters() -> Dictionary<String, String> {
+func getCheckOutParameters() -> Dictionary<String, String> {
     let infos = getUserData()
     let email = infos.email
     let token = infos.token
@@ -34,7 +35,7 @@ public func getCheckOutParameters() -> Dictionary<String, String> {
 
 /// Write the NSUserDefaults (email and token)
 /// - Returns Void
-public func setUserData(email: AnyObject?, token: AnyObject?) -> Void {
+func setUserData(email: AnyObject?, token: AnyObject?) -> Void {
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setObject(email, forKey: "checkEmail")
     defaults.setObject(token, forKey: "checkToken")
@@ -43,15 +44,37 @@ public func setUserData(email: AnyObject?, token: AnyObject?) -> Void {
 
 /// Check if the email is valid
 /// - Returns Bool
-public func checkEmail(email: String) -> Bool {
+func checkEmail(email: String) -> Bool {
     let emailRegEx = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     
     return emailTest.evaluateWithObject(email)
 }
 
-private func getRequest(route: String, parameters: Dictionary<String, String>) -> (success: Bool, request: NSMutableURLRequest) {
-    let request = NSMutableURLRequest(URL: NSURL(string: "http://127.0.0.1:8080/NeverLost/rest/" + route)!)
+func JsonToContact(json: NSDictionary) -> Contact {
+    let email = json["email"] as? String
+    let username = json["username"] as? String
+    let status = json["confirmed"] as? Int
+    
+    let longitude = json["lon"] as? CLLocationDegrees
+    let latitude = json["lat"] as? CLLocationDegrees
+    let coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+    
+    let dateAsString = json["date"] as? String
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "MMM d, yyyy HH:mm:ss a"
+    dateFormatter.timeZone = NSTimeZone(name: "GMT+2")
+    let lastSync = dateFormatter.dateFromString(dateAsString!)
+    
+    let contact = Contact(email: email!, status: status!, username: username!, coordinate: coordinate, lastSync: lastSync!)
+    
+    return contact
+}
+
+func getRequest(route: String, parameters: Dictionary<String, String>) -> (success: Bool, request: NSMutableURLRequest) {
+    let adress = "134.157.121.53"
+    let port = "8080"
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://" + adress + ":" + port + "/NeverLost/rest/" + route)!)
     request.HTTPMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -69,7 +92,7 @@ private func getRequest(route: String, parameters: Dictionary<String, String>) -
 /// - Parameter parameters The parameters to include in the body of the request.
 /// - Parameter callback ServiceResponse
 /// - Returns Void
-public func sendRequestObject(route: String, parameters: Dictionary<String, String>, callback: ServiceResponseObject) -> Void {
+func sendRequestObject(route: String, parameters: Dictionary<String, String>, callback: ServiceResponseObject) -> Void {
     let session = NSURLSession.sharedSession()
     
     let requestItem = getRequest(route, parameters: parameters)
@@ -127,7 +150,7 @@ public func sendRequestObject(route: String, parameters: Dictionary<String, Stri
     }
 }
 
-public func sendRequestArray(route: String, parameters: Dictionary<String, String>, callback: ServiceResponseArray) -> Void {
+func sendRequestArray(route: String, parameters: Dictionary<String, String>, callback: ServiceResponseArray) -> Void {
     let session = NSURLSession.sharedSession()
     
     let requestItem = getRequest(route, parameters: parameters)

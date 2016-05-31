@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Foundation
 
-class MapController : UIViewController, CLLocationManagerDelegate {
+class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var location = CLLocationManager()
     var currentLocation: CLLocation? = nil
     
@@ -24,27 +24,51 @@ class MapController : UIViewController, CLLocationManagerDelegate {
     @IBAction func buttonCenterOnMe(sender: UIButton) {
         centerOnMe()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        PusherService.initMap(map)
+        
+        map.delegate = self
+        
         currentLocation = CLLocation(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
         
         centerOnMe()
-
+        
         location.delegate = self
         location.requestWhenInUseAuthorization()
         location.desiredAccuracy = kCLLocationAccuracyBest
         location.startUpdatingLocation()
+        
+        showFriendsOnMap()
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
-            let distance = currentLocation?.distanceFromLocation(newLocation)
+            let distance = currentLocation!.distanceFromLocation(newLocation)
             if distance > 5 {
                 currentLocation = newLocation
                 sendPosition()
             }
+        }
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKindOfClass(Contact.self) {
+//            let reuseId = String(annotation.subtitle)
+            let reuseId = "friendPin"
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                annotationView!.canShowCallout = true
+            } else {
+                annotationView!.annotation = annotation
+            }
+            return annotationView
+        } else {
+            return nil
         }
     }
     
@@ -55,13 +79,26 @@ class MapController : UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegionMakeWithDistance(center, width, height)
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+
+        map.addAnnotations(Global.getFriends())
+    }
+    
+    private func showFriendsOnMap() -> Void {
+        map.addAnnotations(Global.getFriends())
+        
+        for friend: Contact in Global.getFriends() {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.map.addAnnotation(friend)
+            }
+        }
     }
     
     private func sendPosition() -> Void {
-        let longitude: String = (currentLocation?.coordinate.longitude.description)!
         let latitude: String = (currentLocation?.coordinate.latitude.description)!
+        let longitude: String = (currentLocation?.coordinate.longitude.description)!
+        
         let parameters = getCheckOutParameters()
-        let route = "services/sendmypos/" + longitude + "/" + latitude
+        let route = "services/sendmypos/" + latitude + "/" + longitude
         
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             if code != 200 {
@@ -80,6 +117,7 @@ class MapController : UIViewController, CLLocationManagerDelegate {
             if code == 200 {
                 setUserData(nil, token: nil)
                 Global.resetContacts()
+                PusherService.stop()
                 self.performSegueWithIdentifier("MapToLogin", sender: self)
             } else {
                 print("Error -> \(result!["error"])")

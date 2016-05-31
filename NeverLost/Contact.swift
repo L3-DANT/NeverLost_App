@@ -6,79 +6,61 @@
 //  Copyright © 2016 Milan Antonijevic. All rights reserved.
 //
 
-import CoreLocation
+import MapKit
 import Foundation
 
-public class Contact : Hashable {
-    private var email: String
-    private var status: Int
-    private var username : String
-    private var longitude: CLLocationDegrees
-    private var latitude: CLLocationDegrees
-    
-//    public init(email: String) {
+//class Contact : Hashable {
+//    var email: String
+//    var username : String
+//    var status: Int
+//    var lastSync: NSDate
+//    var coordinate: CLLocationCoordinate2D
+//    
+//    init (email: String, status: Int , username : String, coordinate: CLLocationCoordinate2D, lastSync: NSDate) {
 //        self.email = email
-//        status = -2
-//        username = ""
-//        longitude = CLLocationDegrees()
-//        latitude = CLLocationDegrees()
+//        self.username = username
+//        self.status = status
+//        self.lastSync = lastSync
+//        self.coordinate = coordinate
 //    }
+//    
+//    var hashValue : Int {
+//        get {
+//            return email.hashValue
+//        }
+//    }
+//}
+//
+//func == (lhs: Contact, rhs: Contact) -> Bool {
+//    return lhs.hashValue == rhs.hashValue
+//}
+
+class Contact : NSObject, MKAnnotation {
+    var email: String
+    var username : String
+    var status: Int
+    var lastSync: NSDate
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var subtitle: String?
     
-    public init(email: String, status: Int , username : String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
+    init (email: String, status: Int , username : String, coordinate: CLLocationCoordinate2D, lastSync: NSDate) {
         self.email = email
-        self.status = status
         self.username = username
-        self.longitude = longitude
-        self.latitude = latitude
-    }
-    
-    public func getEmail() -> String {
-        return email
-    }
-    
-    public func setEmail(email: String) -> Void {
-        self.email = email
-    }
-    
-    public func getStatus() -> Int {
-        return status
-    }
-    
-    public func setStatus(status: Int) -> Void {
         self.status = status
+        self.lastSync = lastSync
+        self.coordinate = coordinate
+        title = username
+        subtitle = email
     }
     
-    public func getLongitude() -> CLLocationDegrees {
-        return longitude
-    }
-    
-    public func setLongitude(longitude: CLLocationDegrees) -> Void {
-        self.longitude = longitude
-    }
-    
-    public func getLatitude() -> CLLocationDegrees {
-        return latitude
-    }
-    
-    public func setLatitude(latitude: CLLocationDegrees) -> Void {
-        self.latitude = latitude
-    }
-    
-    public func getUsername () -> String {
-        return username
-    }
-    
-    public func setUsername( username : String) -> Void {
-        self.username = username
-    }
-    
-    public var hashValue : Int {
+    override var hashValue : Int {
         get {
             return email.hashValue
         }
     }
 }
 
-public func == (lhs: Contact, rhs: Contact) -> Bool {
+func == (lhs: Contact, rhs: Contact) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
