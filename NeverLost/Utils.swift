@@ -72,7 +72,7 @@ func JsonToContact(json: NSDictionary) -> Contact {
 }
 
 func getRequest(route: String, parameters: Dictionary<String, String>) -> (success: Bool, request: NSMutableURLRequest) {
-    let adress = "134.157.121.53"
+    let adress = "127.0.0.1"
     let port = "8080"
     let request = NSMutableURLRequest(URL: NSURL(string: "http://" + adress + ":" + port + "/NeverLost/rest/" + route)!)
     request.HTTPMethod = "POST"
@@ -119,24 +119,24 @@ func sendRequestObject(route: String, parameters: Dictionary<String, String>, ca
                     break
                     
                 case 400 :
-                    callback(statusCode, ["error": "Bad Request"])
+                    callback(statusCode, ["error" : ErrorMessage.Code400])
                     break
                     
                 case 401 :
                     setUserData(nil, token: nil)
-                    callback(statusCode, ["error": "Unauthorized"])
+                    callback(statusCode, ["error" : ErrorMessage.Code401])
                     break
                     
                 case 403 :
-                    callback(statusCode, ["error": "Forbidden"])
+                    callback(statusCode, ["error" : ErrorMessage.Code403])
                     break
                     
                 case 404 :
-                    callback(statusCode, ["error": "Not Found"])
+                    callback(statusCode, ["error" : ErrorMessage.Code404])
                     break
                     
                 case 500 :
-                    callback(statusCode, ["error": "Internal Server Error"])
+                    callback(statusCode, ["error" : ErrorMessage.Code500])
                     break
                     
                 default :
@@ -182,28 +182,28 @@ func sendRequestArray(route: String, parameters: Dictionary<String, String>, cal
                     break
                     
                 case 400 :
-                    result.append(["error": "Bad Request"])
+                    result.append(["error" : ErrorMessage.Code400])
                     callback(statusCode, result)
                     break
                     
                 case 401 :
                     setUserData(nil, token: nil)
-                    result.append(["error": "Unauthorized"])
+                    result.append(["error" : ErrorMessage.Code401])
                     callback(statusCode, result)
                     break
                     
                 case 403 :
-                    result.append(["error": "Forbidden"])
+                    result.append(["error" : ErrorMessage.Code403])
                     callback(statusCode, result)
                     break
                     
                 case 404 :
-                    result.append(["error": "Not Found"])
+                    result.append(["error" : ErrorMessage.Code404])
                     callback(statusCode, result)
                     break
                     
                 case 500 :
-                    result.append(["error": "Internal Server Error"])
+                    result.append(["error" : ErrorMessage.Code500])
                     callback(statusCode, result)
                     break
                     

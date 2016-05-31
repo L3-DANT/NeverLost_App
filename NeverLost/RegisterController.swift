@@ -39,9 +39,7 @@ class RegisterController: UIViewController {
                     setUserData(email, token: token)
                     Global.resetContacts()
                     
-                    //TODO: PusherService.start()
-                    
-                    self.performSegueWithIdentifier("RegisterToMap", sender: self)
+                    //TODO: Redirect to login controller
                 } else {
                     self.showAlert("Cet adresse email est déjà utilisée.", button: "Retour")
                 }

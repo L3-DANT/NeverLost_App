@@ -8,6 +8,7 @@
 
 import PusherSwift
 import BRYXBanner
+import UIKit
 import MapKit
 import Foundation
 
@@ -47,12 +48,17 @@ class PusherService {
             
             Global.addContact(contact)
             
-            let title = "Nouvelle demande"
-            let subtitle = username! + " (" + email! + ") souhaite devenir votre ami"
-            
-            let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 203.00/255.0, green: 186.0/255.0, blue: 27.0/255.0, alpha: 1.000))
-            banner.dismissesOnTap = true
-            banner.show(duration: 5.0)
+            if let controller = UIApplication.topViewController() {
+                print(controller.description)
+                if controller is MapController {
+                    let title = "Nouvelle demande"
+                    let subtitle = username! + " (" + email! + ") souhaite devenir votre ami"
+                    
+                    let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 227.00/255.0, green: 227.0/255.0, blue: 9.0/255.0, alpha: 1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 5.0)
+                }
+            }
         })
         
         channel!.bind("friendConfirm", callback: { (data: AnyObject?) -> Void in
@@ -93,10 +99,14 @@ class PusherService {
             
             Global.updatePosition(email!, coordinate: coordinate, lastSync: lastSync!)
             
-            if map != nil {
-                if let friend = Global.getContact(email!) {
-                    map!.removeAnnotation(friend)
-                    map!.addAnnotation(friend)
+            if let controller = UIApplication.topViewController() {
+                if controller is MapController {
+                    if map != nil {
+                        if let friend = Global.getContact(email!) {
+                            map!.removeAnnotation(friend)
+                            map!.addAnnotation(friend)
+                        }
+                    }
                 }
             }
         })

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 extension UIViewController {
-    func showAlert(message: String, button: String, action: String? = nil) {
+    func showAlert(message: String, button: String, action: String? = nil) -> Void {
         let alert = UIAlertController(title : "Attention", message: message, preferredStyle:UIAlertControllerStyle.Alert)
         var buttonAction: UIAlertAction
         
@@ -25,5 +25,11 @@ extension UIViewController {
         alert.addAction(buttonAction)
         
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func hideBackButton() -> Void {
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        
+        navigationItem.leftBarButtonItem = backButton
     }
 }
