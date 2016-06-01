@@ -12,6 +12,14 @@ import Foundation
 class IncomingController : UITableViewController {
     var incomings = Global.getIncoming()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IncomingController.refresh(_:)),name:"confirmRequest", object:nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IncomingController.refresh(_:)),name:"declineRequest", object:nil)
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -21,11 +29,35 @@ class IncomingController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("IncomingCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("IncomingCell", forIndexPath: indexPath) as! IncomingTableViewCell
         
         let incoming = incomings[indexPath.row] as Contact
-        cell.textLabel?.text = incoming.username
-        cell.detailTextLabel?.text = incoming.email
+        cell.IncomingCellUsername!.text = incoming.username
+        cell.IncomingCellEmail!.text = incoming.email
+        
         return cell
+    }
+    
+    @objc private func refresh(notification: NSNotification) -> Void {
+        let email = notification.object as! String
+        
+        if notification.name == "confirmRequest" {
+            Global.confirmFriend(email)
+        } else if notification.name == "declineRequest" {
+            Global.removeContact(email)
+        }
+        
+        incomings = Global.getIncoming()
+        
+        let nb = incomings.count
+        if nb > 0 {
+            tabBarItem.badgeValue = String(nb)
+        } else {
+            tabBarItem.badgeValue = ""
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
 }

@@ -11,6 +11,8 @@ import CoreLocation
 import Foundation
 
 class LoginController: UIViewController {
+    var loginEmail = ""
+    var loginPassword = ""
     
     @IBOutlet weak var fieldEmail: UITextField!
     @IBOutlet weak var fieldPassword: UITextField!
@@ -19,6 +21,9 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         hideBackButton()
+        
+        fieldEmail.text = loginEmail
+        fieldPassword.text = loginPassword
     }
     
     @IBAction func buttonLogin(sender: UIButton) {
@@ -26,11 +31,11 @@ class LoginController: UIViewController {
         let password = fieldPassword.text!
         
         if email.isEmpty {
-            self.showAlert("L'email est obligatoire.", button: "Ok")
+            self.showAlert("Attention", message: "L'email est obligatoire.", button: "Ok")
         } else if !checkEmail(email) {
-            self.showAlert("Veuillez rentrer une adresse email valide.", button: "Ok")
+            self.showAlert("Attention", message: "Veuillez rentrer une adresse email valide.", button: "Ok")
         } else if password.isEmpty {
-            self.showAlert("Le mot de passe est obligatoire.", button: "Ok")
+            self.showAlert("Attention", message: "Le mot de passe est obligatoire.", button: "Ok")
         } else {
             login(email, password: password)
         }
@@ -48,9 +53,9 @@ class LoginController: UIViewController {
                     setUserData(email, token: token)
                     self.getContacts()
                 } else if code == 403 {
-                    self.showAlert("Vous n'avez pas encore validé votre compte.", button: "Retour")
+                    self.showAlert("Attention", message: "Vous n'avez pas encore validé votre compte.", button: "Retour")
                 } else {
-                    self.showAlert("Champs incorrects", button: "Retour")
+                    self.showAlert("Attention", message: "Champs incorrects", button: "Retour")
                 }
             })
         }
@@ -72,7 +77,7 @@ class LoginController: UIViewController {
                     
                     self.performSegueWithIdentifier("LoginToMap", sender: self)
                 } else {
-                    self.showAlert(result.first!["error"]! as! String, button: "Retour")
+                    self.showAlert("Attention", message: result.first!["error"]! as! String, button: "Retour")
                 }
             })
         }

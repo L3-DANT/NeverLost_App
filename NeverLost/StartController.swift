@@ -42,7 +42,7 @@ class StartController : UIViewController {
                     self.performSegueWithIdentifier("StartToMap", sender: self)
                 } else {
                     setUserData(nil, token: nil)
-                    self.showAlert(result.first!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
+                    self.showAlert("Attention", message: result.first!["error"]! as! String, button: "Se connecter", action: "StartToLogin")
                 }
             })
         }

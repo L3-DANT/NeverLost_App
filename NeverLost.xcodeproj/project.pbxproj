@@ -20,6 +20,8 @@
 		5922589B1CE648D20028EED1 /* NeverLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5922589A1CE648D20028EED1 /* NeverLostUITests.swift */; };
 		596497D31CFB5A1500D33A97 /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596497D21CFB5A1500D33A97 /* PusherService.swift */; };
 		599B68371CFE7A2200F90316 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B68361CFE7A2200F90316 /* FriendTableViewCell.swift */; };
+		599B68391CFE842B00F90316 /* IncomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B68381CFE842B00F90316 /* IncomingTableViewCell.swift */; };
+		599B683B1CFE843900F90316 /* OutcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B683A1CFE843900F90316 /* OutcomingTableViewCell.swift */; };
 		59A02F591CFDDEE3006221F3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F581CFDDEE3006221F3 /* ErrorMessage.swift */; };
 		59A02F5B1CFDF9AA006221F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */; };
 		59A02F5D1CFDF9C1006221F3 /* IncomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */; };
@@ -85,6 +87,8 @@
 		5922589C1CE648D20028EED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596497D21CFB5A1500D33A97 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		599B68361CFE7A2200F90316 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		599B68381CFE842B00F90316 /* IncomingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingTableViewCell.swift; sourceTree = "<group>"; };
+		599B683A1CFE843900F90316 /* OutcomingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutcomingTableViewCell.swift; sourceTree = "<group>"; };
 		59A02F581CFDDEE3006221F3 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingController.swift; sourceTree = "<group>"; };
@@ -184,12 +188,14 @@
 				59FE72DF1CE75C3E00036D07 /* LoginController.swift */,
 				59FE72E11CE75C4B00036D07 /* RegisterController.swift */,
 				59FE72EA1CE76C9700036D07 /* MapController.swift */,
+				59134EED1CFE4C4A00558D82 /* ContactsController.swift */,
 				59A02F5A1CFDF9AA006221F3 /* FriendsController.swift */,
 				59A02F5C1CFDF9C1006221F3 /* IncomingController.swift */,
 				59A02F5E1CFDF9D6006221F3 /* OutcomingController.swift */,
 				59134EEB1CFE496800558D82 /* ProfileController.swift */,
-				59134EED1CFE4C4A00558D82 /* ContactsController.swift */,
 				599B68361CFE7A2200F90316 /* FriendTableViewCell.swift */,
+				599B68381CFE842B00F90316 /* IncomingTableViewCell.swift */,
+				599B683A1CFE843900F90316 /* OutcomingTableViewCell.swift */,
 			);
 			path = NeverLost;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 				59FE72EB1CE76C9700036D07 /* MapController.swift in Sources */,
 				59F526BB1CFCB9A800D106B3 /* PinView.swift in Sources */,
 				599B68371CFE7A2200F90316 /* FriendTableViewCell.swift in Sources */,
+				599B68391CFE842B00F90316 /* IncomingTableViewCell.swift in Sources */,
 				59134EEC1CFE496800558D82 /* ProfileController.swift in Sources */,
 				59A02F5B1CFDF9AA006221F3 /* FriendsController.swift in Sources */,
 				59FE72E21CE75C4B00036D07 /* RegisterController.swift in Sources */,
@@ -470,6 +477,7 @@
 				59A02F5F1CFDF9D6006221F3 /* OutcomingController.swift in Sources */,
 				0F852C791CF0686E00C640B6 /* Global.swift in Sources */,
 				59FE72E71CE75C7900036D07 /* Extension_UIViewController.swift in Sources */,
+				599B683B1CFE843900F90316 /* OutcomingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
