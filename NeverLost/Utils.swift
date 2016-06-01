@@ -16,7 +16,6 @@ typealias ServiceResponseArray = (Int, [NSDictionary]) -> Void
 /// - Returns Email and token
 func getUserData() -> (email: String?, token: String?) {
     let defaults = NSUserDefaults.standardUserDefaults()
-    
     let email = defaults.stringForKey("checkEmail")
     let token = defaults.stringForKey("checkToken")
     
@@ -72,9 +71,9 @@ func JsonToContact(json: NSDictionary) -> Contact {
 }
 
 func getRequest(route: String, parameters: Dictionary<String, String>) -> (success: Bool, request: NSMutableURLRequest) {
-    let adress = "86.245.59.40"
+    let address = "86.245.59.40"
 //    let port = "8080"
-    let request = NSMutableURLRequest(URL: NSURL(string: "http://" + adress + /*":" + port + */"/NeverLost/rest/" + route)!)
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://" + address + /*":" + port + */"/NeverLost/rest/" + route)!)
     request.HTTPMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")

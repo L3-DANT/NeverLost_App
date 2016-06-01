@@ -15,15 +15,22 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var location = CLLocationManager()
     var currentLocation: CLLocation? = nil
+    var myEmail = ""
+    var myUsername = ""
+    var myLastSync = ""
     
     @IBOutlet weak var map: MKMapView!
     
-    @IBAction func buttonLogout(sender: UIButton) {
-        logout()
+    @IBAction func buttonProfile(sender: UIButton) {
+        getInfos()
     }
     
     @IBAction func buttonCenterOnMe(sender: UIButton) {
         centerOnMe()
+    }
+    
+    @IBAction func buttonLogout(sender: UIButton) {
+        logout()
     }
     
     override func viewDidLoad() {
@@ -47,6 +54,15 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         showFriendsOnMap()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "MapToProfile" {
+            let profileController = segue.destinationViewController as! ProfileController
+            profileController.profileEmail = myEmail
+            profileController.profileUsername = myUsername
+            profileController.profileLastSync = myLastSync
+        }
+    }
+    
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
             let distance = currentLocation!.distanceFromLocation(newLocation)
@@ -59,7 +75,7 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation.isKindOfClass(Contact.self) {
-//            let reuseId = String(annotation.subtitle)
+            //            let reuseId = String(annotation.subtitle)
             let reuseId = "friendPin"
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
             
@@ -82,7 +98,7 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region = MKCoordinateRegionMakeWithDistance(center, width, height)
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
-
+        
         map.addAnnotations(Global.getFriends())
     }
     
@@ -104,9 +120,38 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let route = "services/sendmypos/" + latitude + "/" + longitude
         
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code != 200 {
-                print("Error -> \(result!["error"])")
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if code != 200 {
+                    print("Error -> \(result!["error"])")
+                }
+            })
+        }
+    }
+    
+    private func getInfos() -> Void {
+        let parameters = getCheckOutParameters()
+        
+        let infos = getUserData()
+        let route = "services/findfriend/" + infos.email!
+        
+        sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    self.myEmail = (result!["email"] as? String)!
+                    self.myUsername = (result!["username"] as? String)!
+                    
+                    let dateAsString = result!["date"] as? String
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "MMM d, yyyy HH:mm:ss a"
+                    dateFormatter.timeZone = NSTimeZone(name: "GMT+2")
+                    let lastSync = dateFormatter.dateFromString(dateAsString!)
+                    self.myLastSync = lastSync!.shortDate
+                    
+                    self.performSegueWithIdentifier("MapToProfile", sender: self)
+                } else {
+                    print("Error -> \(result!["error"])")
+                }
+            })
         }
     }
     
@@ -117,14 +162,17 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let route = "authentication/logout"
         
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
-            if code == 200 {
-                setUserData(nil, token: nil)
-                Global.resetContacts()
-                PusherService.stop()
-                self.performSegueWithIdentifier("MapToLogin", sender: self)
-            } else {
-                print("Error -> \(result!["error"])")
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if code == 200 {
+                    setUserData(nil, token: nil)
+                    Global.resetContacts()
+                    PusherService.stop()
+                    
+                    self.performSegueWithIdentifier("MapToLogin", sender: self)
+                } else {
+                    print("Error -> \(result!["error"])")
+                }
+            })
         }
     }
 }

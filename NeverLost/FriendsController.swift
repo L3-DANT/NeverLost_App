@@ -21,11 +21,13 @@ class FriendsController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath)
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as! FriendTableViewCell
+            
         let friend = friends[indexPath.row] as Contact
-        cell.textLabel?.text = friend.username
-        cell.detailTextLabel?.text = friend.email
+        cell.friendCellUsername!.text = friend.username
+        cell.friendCellEmail!.text = friend.email
+        cell.friendCellLastSync!.text = friend.lastSync.shortDate
+        
         return cell
     }
 }
