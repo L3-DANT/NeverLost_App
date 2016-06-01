@@ -29,6 +29,12 @@ class Global {
         contacts.insert(contact)
     }
     
+    static func removeContact(email: String) -> Void {
+        if let contact = getContact(email) {
+            contacts.remove(contact)
+        }
+    }
+    
     static func resetContacts() -> Void {
         contacts.removeAll()
     }
@@ -78,17 +84,17 @@ class Global {
 //        return pins
 //    }
     
-    static func getFriendsAnnotations() -> [MKPointAnnotation] {
-        var pins = [MKPointAnnotation]()
-        
-        for contact: Contact in getFriends() {
-            let pin = MKPointAnnotation()
-            pin.coordinate = contact.coordinate
-            pin.title = contact.username
-            pin.subtitle = contact.email
-            pins.append(pin)
-        }
-        
-        return pins
-    }
+//    static func getFriendsAnnotations() -> [MKPointAnnotation] {
+//        var pins = [MKPointAnnotation]()
+//        
+//        for contact: Contact in getFriends() {
+//            let pin = MKPointAnnotation()
+//            pin.coordinate = contact.coordinate
+//            pin.title = contact.username
+//            pin.subtitle = contact.email
+//            pins.append(pin)
+//        }
+//        
+//        return pins
+//    }
 }

@@ -29,9 +29,9 @@ class ProfileController: UIViewController {
     
     @IBAction func buttonUpdate(sender: UIButton) {
         if fieldUsername.text!.isEmpty {
-            self.showAlert("Le username est obligatoire.", button: "Ok")
+            self.showAlert("Attention", message: "Le username est obligatoire.", button: "Ok")
         } else if fieldConfirmation.text! != fieldPassword.text! {
-            self.showAlert("Les champs de mot de passe ne correspondent pas.", button: "Ok")
+            self.showAlert("Attention", message: "Les champs de mot de passe ne correspondent pas.", button: "Ok")
         } else if !(fieldUsername.text! == profileEmail && fieldPassword.text!.isEmpty) {
             update(fieldUsername.text!, password: fieldPassword.text!)
         }
@@ -63,7 +63,7 @@ class ProfileController: UIViewController {
         sendRequestObject(route, parameters: parameters) { (code: Int, result: NSDictionary?) in
             dispatch_async(dispatch_get_main_queue(), {
                 if code == 200 {
-                    self.showAlert("Vos informations ont bien été modifiées", button: "Ok")
+                    self.showAlert("Félicitation", message: "Vos informations ont bien été modifiées", button: "Ok")
                     self.profileUsername = username
                     self.fieldPassword.text = ""
                     self.fieldConfirmation.text = ""

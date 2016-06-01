@@ -18,6 +18,8 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var myEmail = ""
     var myUsername = ""
     var myLastSync = ""
+    var focusLatitude: CLLocationDegrees? = nil
+    var focusLongitude: CLLocationDegrees? = nil
     
     @IBOutlet weak var map: MKMapView!
     
@@ -26,7 +28,7 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @IBAction func buttonCenterOnMe(sender: UIButton) {
-        centerOnMe()
+        centerOnContact(map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
     }
     
     @IBAction func buttonLogout(sender: UIButton) {
@@ -44,7 +46,11 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         currentLocation = CLLocation(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
         
-        centerOnMe()
+        if focusLatitude != nil && focusLongitude != nil {
+            centerOnContact(focusLatitude!, longitude: focusLongitude!)
+        } else {
+            centerOnContact(map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
+        }
         
         location.delegate = self
         location.requestWhenInUseAuthorization()
@@ -91,15 +97,13 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    private func centerOnMe() -> Void {
-        let center = CLLocationCoordinate2D(latitude: map.userLocation.coordinate.latitude, longitude: map.userLocation.coordinate.longitude)
+    private func centerOnContact(latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> Void {
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let width = 1000.0
         let height = 1000.0
         let region = MKCoordinateRegionMakeWithDistance(center, width, height)
         map.setRegion(region, animated: true)
         map.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
-        
-        map.addAnnotations(Global.getFriends())
     }
     
     private func showFriendsOnMap() -> Void {
