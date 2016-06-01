@@ -18,6 +18,8 @@ class PusherService {
     private static var channel: PusherChannel? = nil
     
     private static var map: MKMapView? = nil
+    private static var table: UITableView? = nil
+    private static var tabBar: UITabBarItem? = nil
     
     static func start() {
         pusher = Pusher(
@@ -49,12 +51,16 @@ class PusherService {
             Global.addContact(contact)
             
             if let controller = UIApplication.topViewController() {
-                print(controller.description)
-                if controller is MapController {
+                if controller is IncomingController {
+                    if table != nil && tabBar != nil {
+                        table!.reloadData()
+                        tabBar!.badgeValue = String(Global.getIncoming().count)
+                    }
+                } else {
                     let title = "Nouvelle demande"
                     let subtitle = username! + " (" + email! + ") souhaite devenir votre ami"
                     
-                    let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 227.00/255.0, green: 227.0/255.0, blue: 9.0/255.0, alpha: 1.000))
+                    let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 255.00/255.0, green: 207.0/255.0, blue: 76.0/255.0, alpha: 1.000))
                     banner.dismissesOnTap = true
                     banner.show(duration: 5.0)
                 }
@@ -77,12 +83,35 @@ class PusherService {
             Global.confirmFriend(email!)
             Global.updatePosition(email!, coordinate: coordinate, lastSync: lastSync!)
             
-            let title = "Confirmation"
-            let subtitle = username! + " (" + email! + ") est maintenant votre ami"
-            
-            let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 48.00/255.0, green: 174.0/255.0, blue: 51.5/255.0, alpha: 1.000))
-            banner.dismissesOnTap = true
-            banner.show(duration: 5.0)
+            if let controller = UIApplication.topViewController() {
+                if controller is FriendsController {
+                    if table != nil && tabBar != nil {
+                        table!.reloadData()
+                        tabBar!.badgeValue = String(Global.getFriends().count)
+                    }
+                } else if controller is OutcomingController {
+                    if table != nil && tabBar != nil {
+                        table!.reloadData()
+                        tabBar!.badgeValue = String(Global.getOutcoming().count)
+                    }
+                } else {
+                    if controller is MapController {
+                        if map != nil {
+                            if let friend = Global.getContact(email!) {
+                                map!.removeAnnotation(friend)
+                                map!.addAnnotation(friend)
+                            }
+                        }
+                    }
+                    
+                    let title = "Confirmation"
+                    let subtitle = username! + " (" + email! + ") est maintenant votre ami"
+                    
+                    let banner = Banner(title: title, subtitle: subtitle, image: UIImage(named: "contacts"), backgroundColor: UIColor(red: 48.00/255.0, green: 174.0/255.0, blue: 51.5/255.0, alpha: 1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 5.0)
+                }
+            }
         })
         
         channel!.bind("updatePos", callback: { (data: AnyObject?) -> Void in
@@ -114,8 +143,19 @@ class PusherService {
         pusher!.connect()
     }
     
+    static func removeFriend(email: String) {
+        if let friend = Global.getContact(email) {
+            map!.removeAnnotation(friend)
+        }
+    }
+    
     static func initMap(map: MKMapView) {
         self.map = map
+    }
+    
+    static func initTable(table: UITableView, tabBar: UITabBarItem) {
+        self.table = table
+        self.tabBar = tabBar
     }
     
     static func stop() -> Void {

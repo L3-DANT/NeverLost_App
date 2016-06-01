@@ -10,11 +10,12 @@ import UIKit
 import Foundation
 
 class OutcomingController : UITableViewController {
-    var outcomings = Global.getOutcoming()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PusherService.initTable(self.tableView, tabBar: tabBarItem)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OutcomingController.refresh(_:)),name:"cancelRequest", object:nil)
     }
     
@@ -23,24 +24,23 @@ class OutcomingController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return outcomings.count
+        return Global.getOutcoming().count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("OutcomingCell", forIndexPath: indexPath) as! OutcomingTableViewCell
         
-        let outcoming = outcomings[indexPath.row] as Contact
+        let outcoming = Global.getOutcoming()[indexPath.row] as Contact
         cell.OutcomingCellEmail?.text = outcoming.email
         
         return cell
     }
     
-    @objc private func refresh(notification: NSNotification) -> Void {
+    @objc func refresh(notification: NSNotification) -> Void {
         let email = notification.object as! String
         Global.removeContact(email)
-        outcomings = Global.getOutcoming()
         
-        let nb = outcomings.count
+        let nb = Global.getOutcoming().count
         if nb > 0 {
             tabBarItem.badgeValue = String(nb)
         } else {
