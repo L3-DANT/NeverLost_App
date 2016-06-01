@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 
 class FriendsController : UITableViewController {
-    var friends = Global.getFriends()
     var contact: Contact? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PusherService.initTable(self.tableView, tabBar: tabBarItem)
         contact = nil
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendsController.centerOnHim(_:)),name:"centerOnHim", object:nil)
@@ -36,13 +36,13 @@ class FriendsController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        return Global.getFriends().count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendsCell", forIndexPath: indexPath) as! FriendTableViewCell
             
-        let friend = friends[indexPath.row] as Contact
+        let friend = Global.getFriends()[indexPath.row] as Contact
         cell.friendCellUsername!.text = friend.username
         cell.friendCellEmail!.text = friend.email
         cell.friendCellLastSync!.text = friend.lastSync.shortDate
@@ -56,12 +56,12 @@ class FriendsController : UITableViewController {
         self.performSegueWithIdentifier("FriendsToMap", sender: self)
     }
     
-    @objc private func refresh(notification: NSNotification) -> Void {
+    @objc func refresh(notification: NSNotification) -> Void {
         let email = notification.object as! String
+        PusherService.removeFriend(email)
         Global.removeContact(email)
-        friends = Global.getFriends()
         
-        let nb = friends.count
+        let nb = Global.getFriends().count
         if nb > 0 {
             tabBarItem.badgeValue = String(nb)
         } else {
